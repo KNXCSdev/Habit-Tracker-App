@@ -1,0 +1,77 @@
+📘 Landing Page Content
+🏠 Hero Section
+Heading: Build Better Habits, One Day at a Time
+
+Subheading: Stay accountable and track your daily goals with a simple and powerful habit tracker.
+
+CTA Buttons:Get Started Login
+
+--------------------------------
+
+🔐 Auth Pages
+🔑 Login Page
+Heading: Welcome Back!
+
+Form Labels: Email Password
+Button: Log In
+Links: Don’t have an account? Sign up
+Errors: "Invalid email or password" "Email is required" "Password must be at least 6 characters"
+
+------------------------------------------------------------
+
+📝 Register Page
+Heading: Create an Account
+Form Labels: Name Email Password Confirm Password
+Button: Sign Up
+Success Message: "Account created! Redirecting to dashboard..."
+Errors: "Passwords do not match" "All fields are required"
+
+-----------------------------------------------------------------
+
+🧭 Dashboard Page
+Greeting
+Good Morning, [UserName] 👋
+Here’s how you’re doing today:
+Sections: 🟢 Your Habits "You have 4 habits scheduled for today."
+📈 Streaks "3 days in a row — keep it up!"
+Buttons: + Add New Habit View Details
+
+---------------------------------------------------------------------
+
+✅ Habit Form Modal
+Heading: Add a New Habit
+Form Fields: Habit Title Frequency (Daily, Weekly, etc.) Time of Day (Optional)
+Buttons: Save Habit Cancel
+Success: "Habit added successfully!"
+Errors: "Habit name is required"
+
+----------------------------------------------------------------
+
+📋 Habit Detail Page
+Heading: Drink Water
+Stats: ✅ Completed: 12 times 🔁 Frequency: Daily 🔥 Current Streak: 4 days
+Button: Mark as Complete Edit Habit Delete Habit
+Success: "Marked as completed for today!"
+
+-------------------------------------------------------------
+
+🧾 Empty States
+No Habits Yet? "You haven’t added any habits. Let’s get started!" No Progress Today? "Your habits are waiting… let’s make today count!"
+
+-------------------------------------------------------------
+
+📊 Progress Dashboard
+Heading: Weekly Progress
+Chart Labels: Days of the Week Completion %
+Info Box: Keep your streak alive! You’ve completed 78% of your goals this week.
+
+---------------------------------------------------------------
+
+📦 Miscellaneous
+Navigation Links: Dashboard My Habits Progress Settings Logout
+
+-------------------------------------------------------------
+
+Footer:
+Made with ❤️ by [Your Name]
+© 2025 TrackFlow

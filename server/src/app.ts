@@ -1,0 +1,39 @@
+import express from 'express';
+import cors from 'cors';
+import compression from 'compression';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import morgan from 'morgan';
+
+const app = express();
+
+app.use(helmet());
+
+app.use(cors());
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+//LIMIT REQUEST FROM SAME API
+const limiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 60 minutes
+  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  message: 'Too many requests from this IP, please try again in an hour',
+});
+
+app.use('/api', limiter);
+
+app.use(express.json({ limit: '10kb' }));
+
+app.use(compression());
+
+// app.use('/', viewRouter);
+// app.use('/api/v1/tours', tourRouter);
+// app.use('/api/v1/users', userRouter);
+// app.use('/api/v1/reviews', reviewRouter);
+// app.use('/api/v1/bookings', bookingRouter);
+
+export default app;

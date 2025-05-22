@@ -1,0 +1,8 @@
+| Purpose      | Color         | Hex       |
+| ------------ | ------------- | --------- |
+| Primary      | Emerald Green | `#10B981` |
+| Secondary    | Sky Blue      | `#38BDF8` |
+| Background   | Light Gray    | `#F9FAFB` |
+| Text Primary | Charcoal      | `#1F2937` |
+| Accent       | Soft Orange   | `#FBBF24` |
+| Error        | Red Rose      | `#EF4444` |

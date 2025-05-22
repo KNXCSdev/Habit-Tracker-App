@@ -1,0 +1,13 @@
+{
+  "name": "habit-tracker-app",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "knxcsdev",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev"
+  }
+}

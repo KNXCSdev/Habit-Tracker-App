@@ -1,0 +1,55 @@
+{
+  "user": {
+    "_id": "665a4a1234ab567890cdef01",
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "createdAt": "2025-05-20T10:00:00Z"
+  },
+  "habits": [
+    {
+      "_id": "habit001",
+      "userId": "665a4a1234ab567890cdef01",
+      "title": "Drink 2L of Water",
+      "frequency": "daily",
+      "createdAt": "2025-05-20T10:05:00Z",
+      "completedDates": ["2025-05-20", "2025-05-21", "2025-05-22"],
+      "streak": 3
+    },
+    {
+      "_id": "habit002",
+      "userId": "665a4a1234ab567890cdef01",
+      "title": "Read 30 minutes",
+      "frequency": "daily",
+      "createdAt": "2025-05-18T09:20:00Z",
+      "completedDates": ["2025-05-18", "2025-05-20", "2025-05-22"],
+      "streak": 1
+    },
+    {
+      "_id": "habit003",
+      "userId": "665a4a1234ab567890cdef01",
+      "title": "Workout (3x a week)",
+      "frequency": "weekly",
+      "createdAt": "2025-05-17T08:00:00Z",
+      "completedDates": ["2025-05-18", "2025-05-20"],
+      "weeklyGoal": 3,
+      "weeklyProgress": 2
+    }
+  ]
+}
+
+// user: A sample user with a unique ID
+
+// habits: Array of habits
+
+// title: The habit name
+
+// frequency: "daily" or "weekly"
+
+// completedDates: Dates the habit was completed
+
+// streak: Auto-calculated streak (daily habits)
+
+// weeklyGoal: Optional, for weekly frequency habits
+
+
+// weeklyProgress: Number of times completed this week
