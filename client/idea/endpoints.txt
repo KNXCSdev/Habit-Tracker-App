@@ -1,0 +1,8 @@
+POST   /api/auth/register
+POST   /api/auth/login
+GET    /api/habits/
+POST   /api/habits/
+PUT    /api/habits/:id
+DELETE /api/habits/:id
+POST   /api/habits/:id/complete (mark complete)
+GET    /api/habits/:id/history (habit tracking)

@@ -5,6 +5,9 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
+import userRouter from './routes/userRoutes';
+import habitRouter from './routes/habitRoutes';
+
 const app = express();
 
 app.use(helmet());
@@ -30,10 +33,7 @@ app.use(express.json({ limit: '10kb' }));
 
 app.use(compression());
 
-// app.use('/', viewRouter);
-// app.use('/api/v1/tours', tourRouter);
-// app.use('/api/v1/users', userRouter);
-// app.use('/api/v1/reviews', reviewRouter);
-// app.use('/api/v1/bookings', bookingRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/habits', habitRouter);
 
 export default app;

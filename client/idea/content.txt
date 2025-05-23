@@ -1,3 +1,6 @@
+TrackFlow
+Tagline: Build habits. Shape your future.
+
 📘 Landing Page Content
 🏠 Hero Section
 Heading: Build Better Habits, One Day at a Time
