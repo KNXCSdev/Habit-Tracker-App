@@ -45,7 +45,7 @@ habitSchema.pre('save', function (next) {
   if (!this.isModified('completedDates')) return next();
 
   const dates = [...this.completedDates]
-    .map((d) => new Date(d).toISOString().split('T')[0])
+    .map((d: any) => new Date(d as Date | string).toISOString().split('T')[0])
     .sort();
 
   let streak = 1;
@@ -71,7 +71,9 @@ habitSchema.pre('save', function (next) {
   if (this.frequency === 'weekly') {
     const today = new Date();
     const progress = calculateWeeklyProgress(
-      this.completedDates.map((d) => new Date(d).toISOString().split('T')[0]),
+      this.completedDates.map(
+        (d: any) => new Date(d as Date | string).toISOString().split('T')[0]
+      ),
       today
     );
     this.weeklyProgress = progress;

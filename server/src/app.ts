@@ -7,6 +7,7 @@ import morgan from 'morgan';
 
 import userRouter from './routes/userRoutes';
 import habitRouter from './routes/habitRoutes';
+import errorController from './controllers/errorController';
 
 const app = express();
 
@@ -35,5 +36,7 @@ app.use(compression());
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/habits', habitRouter);
+
+app.use(errorController);
 
 export default app;
