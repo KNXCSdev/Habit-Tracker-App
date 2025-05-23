@@ -1,0 +1,23 @@
+🧩 Features
+1. User Authentication
+Register/Login (JWT-based)
+
+Protected routes using React Router
+
+2. Habit Management
+Create/Edit/Delete habits (e.g., "Drink Water", "Read 30 min")
+
+Set frequency (daily, weekly, etc.)
+
+3. Daily Tracker
+Mark habits as complete per day
+
+View habit history
+
+4. Dashboard
+Overview of current streaks
+
+Progress chart (weekly completion %)
+
+5. Responsive UI
+Tailwind CSS for clean, mobile-friendly design
