@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+dotenv.config({ path: './config.env' });
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
@@ -7,7 +8,6 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-dotenv.config({ path: './config.env' });
 import app from './app';
 
 const DB = process.env.DATABASE!.replace(
@@ -27,6 +27,7 @@ mongoose
   });
 
 const port = process.env.PORT || 3000;
+
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });

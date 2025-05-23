@@ -1,8 +1,9 @@
 import express from 'express';
 
 import * as habitController from './../controllers/habitController';
+import * as authController from './../controllers/authController';
 
-const habitRouter = express.Router();
+const habitRouter = express.Router({ mergeParams: true });
 
 // habitRouter.route('/signup').post(authController.signup);
 // habitRouter.route('/login').post(authController.login);
@@ -10,13 +11,16 @@ const habitRouter = express.Router();
 
 habitRouter
   .route('/')
-  .get(habitController.getAllHabits)
+  .get(
+    authController.protect,
+    authController.restrictTo(['admin']),
+    habitController.getAllHabits
+  )
   .post(habitController.createHabit);
 
-// habitRouter
-//   .route('/:id')
-//   .get(userController.getUser)
-//   .delete(userController.deleteUser)
-//   .patch(userController.updateUser);
+habitRouter
+  .route('/:id')
+  .patch(habitController.updateHabit)
+  .delete(habitController.deleteHabit);
 
 export default habitRouter;
