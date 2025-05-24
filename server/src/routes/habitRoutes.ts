@@ -5,10 +5,6 @@ import * as authController from './../controllers/authController';
 
 const habitRouter = express.Router({ mergeParams: true });
 
-// habitRouter.route('/signup').post(authController.signup);
-// habitRouter.route('/login').post(authController.login);
-// habitRouter.route('/logout').get(authController.logout);
-
 habitRouter
   .route('/')
   .get(
@@ -20,7 +16,8 @@ habitRouter
 
 habitRouter
   .route('/:id')
-  .patch(habitController.updateHabit)
-  .delete(habitController.deleteHabit);
+  .get(authController.protect, habitController.getHabit)
+  .patch(authController.protect, habitController.updateHabit)
+  .delete(authController.protect, habitController.deleteHabit);
 
 export default habitRouter;

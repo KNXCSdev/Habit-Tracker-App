@@ -20,6 +20,23 @@ export const getAllHabits = catchAsync(
   }
 );
 
+export const getHabit = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const habit = await Habit.findOne({ id: req.params.id });
+
+    if (!habit) {
+      return next(
+        new AppError('Something went wrong with getting the habit', 404)
+      );
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: habit,
+    });
+  }
+);
+
 export const createHabit = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const habit = await Habit.create(req.body);
