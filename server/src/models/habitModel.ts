@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import calculateWeeklyProgress from '../utils/calculateWeeklyProgress';
+import calculateWeeklyProgress from '../utils/calculateWeeklyProgress.js';
 
 const habitSchema = new mongoose.Schema({
   user: {
@@ -32,11 +32,11 @@ const habitSchema = new mongoose.Schema({
   // Optional Weekly Fields
   weeklyGoal: {
     type: Number,
-    default: null,
+    default: undefined,
   },
   weeklyProgress: {
     type: Number,
-    default: null,
+    default: undefined,
   },
 });
 

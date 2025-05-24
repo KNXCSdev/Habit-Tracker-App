@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import User from '../models/userModel';
-import { catchAsync } from '../utils/catchAsync';
-import AppError from '../utils/appError';
+import User from '../models/userModel.js';
+import { catchAsync } from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
 import { Types } from 'mongoose';
 
 export const getAllUsers = catchAsync(
