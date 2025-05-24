@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import User from '../models/userModel';
+import User from '../models/userModel.js';
 import jwt from 'jsonwebtoken';
 import { Types } from 'mongoose';
-import AppError from '../utils/appError';
-import { catchAsync } from '../utils/catchAsync';
+import AppError from '../utils/appError.js';
+import { catchAsync } from '../utils/catchAsync.js';
 import { promisify } from 'util';
 
 const signToken = (id: string) => {

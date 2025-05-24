@@ -5,9 +5,9 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import userRouter from './routes/userRoutes';
-import habitRouter from './routes/habitRoutes';
-import errorController from './controllers/errorController';
+import userRouter from './routes/userRoutes.js';
+import habitRouter from './routes/habitRoutes.js';
+import errorController from './controllers/errorController.js';
 
 const app = express();
 

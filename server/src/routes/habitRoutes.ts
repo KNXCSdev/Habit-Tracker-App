@@ -1,7 +1,7 @@
 import express from 'express';
 
-import * as habitController from './../controllers/habitController';
-import * as authController from './../controllers/authController';
+import * as habitController from './../controllers/habitController.js';
+import * as authController from './../controllers/authController.js';
 
 const habitRouter = express.Router({ mergeParams: true });
 

@@ -1,8 +1,8 @@
 import express from 'express';
 
-import * as userController from './../controllers/userController';
-import * as authController from './../controllers/authController';
-import habitRouter from './habitRoutes';
+import * as userController from './../controllers/userController.js';
+import * as authController from './../controllers/authController.js';
+import habitRouter from './habitRoutes.js';
 
 const userRouter = express.Router({ mergeParams: true });
 

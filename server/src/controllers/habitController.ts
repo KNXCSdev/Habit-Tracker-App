@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import Habit from '../models/habitModel';
-import { catchAsync } from '../utils/catchAsync';
-import AppError from '../utils/appError';
+import Habit from '../models/habitModel.js';
+import { catchAsync } from '../utils/catchAsync.js';
+import AppError from '../utils/appError.js';
 
 export const getAllHabits = catchAsync(
   async (req: any, res: Response, next: NextFunction) => {

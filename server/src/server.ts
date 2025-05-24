@@ -8,7 +8,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-import app from './app';
+import app from './app.js';
 
 const DB = process.env.DATABASE!.replace(
   '<PASSWORD>',
