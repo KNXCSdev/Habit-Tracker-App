@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: Trackify
+    env: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
