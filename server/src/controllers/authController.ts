@@ -132,7 +132,7 @@ export const protect = catchAsync(
   }
 );
 
-export const restrictTo = (roles: [string]) => {
+export const restrictTo = (roles: string[]) => {
   return (req: any, res: Response, next: NextFunction) => {
     if (!roles.includes(req.user.role)) {
       return next(

@@ -2,8 +2,11 @@ import express from 'express';
 
 import * as userController from './../controllers/userController';
 import * as authController from './../controllers/authController';
+import habitRouter from './habitRoutes';
 
 const userRouter = express.Router({ mergeParams: true });
+
+userRouter.use('/:userId/habits', habitRouter);
 
 userRouter.route('/signup').post(authController.signup);
 userRouter.route('/login').post(authController.login);
