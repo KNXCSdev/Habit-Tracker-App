@@ -20,6 +20,10 @@ interface IUser {
   password?: string;
   passwordConfirm?: string;
   role: string;
+  correctPassword?: (
+    candidatePassword: string,
+    userPassword: string
+  ) => Promise<boolean>;
 }
 
 const createSendToken = (
@@ -72,6 +76,23 @@ export const logout = (req: Request, res: Response) => {
   res.status(200).json({ status: 'success' });
 };
 
+export const login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return next(new AppError('Please provide email and password!', 400));
+  }
+  const user = await User.findOne({ email }).select('+password');
+
+  if (
+    !user ||
+    !(await (user as IUser).correctPassword?.(password, user.password))
+  ) {
+    return next(new AppError('Incorrect email or password', 401));
+  }
+  createSendToken(user, 200, req, res);
+});
+
 export const protect = catchAsync(
   async (req: any, res: Response, next: NextFunction) => {
     let token: string | undefined;
@@ -86,7 +107,7 @@ export const protect = catchAsync(
       token = req.cookies.jwt;
     }
 
-    if (!token) {
+    if (!token || token === null) {
       return next(
         new AppError('You are not logged in! Please log in to get access!', 401)
       );
