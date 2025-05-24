@@ -5,7 +5,6 @@ const habitSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: true,
   },
   title: {
     type: String,
@@ -40,6 +39,15 @@ const habitSchema = new mongoose.Schema({
     default: null,
   },
 });
+
+// habitSchema.pre(/^find/, function (next) {
+//   (this as mongoose.Query<any, any>).populate({
+//     path: 'user',
+//     select: '-__v -passwordChangedAt',
+//   });
+
+//   next();
+// });
 
 habitSchema.pre('save', function (next) {
   if (!this.isModified('completedDates')) return next();

@@ -4,17 +4,41 @@ import { catchAsync } from '../utils/catchAsync';
 import AppError from '../utils/appError';
 
 export const getAllHabits = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const habits = await Habit.find();
+  async (req: any, res: Response, next: NextFunction) => {
+    let filter: Record<string, any> = {};
 
-    if (!habits) {
-      return next(
-        new AppError('Something went wrong with getting all of the habits', 404)
-      );
+    // If logged-in user is not admin, limit to their own habits
+    if (req.user.role !== 'admin') {
+      filter = { user: req.user.id };
     }
+
+    // If nested route: /users/:userId/habits — validate and limit access
+    if (req.params.userId) {
+      if (req.user.role !== 'admin' && req.user.id !== req.params.userId) {
+        return next(
+          new AppError('You do not have permission to view these habits.', 403)
+        );
+      }
+      filter = { user: req.params.userId };
+    }
+
+    let query = Habit.find(filter);
+
+    // Only populate if admin (or you want richer data)
+    if (req.user.role === 'admin') {
+      query = query.populate({
+        path: 'user',
+        select: '-__v -passwordChangedAt',
+      });
+    } else {
+      query = query.select('-user');
+    }
+
+    const habits = await query;
 
     res.status(200).json({
       status: 'success',
+      results: habits.length,
       data: habits,
     });
   }
@@ -22,7 +46,7 @@ export const getAllHabits = catchAsync(
 
 export const getHabit = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const habit = await Habit.findOne({ id: req.params.id });
+    const habit = await Habit.findById(req.params.id);
 
     if (!habit) {
       return next(
@@ -39,7 +63,7 @@ export const getHabit = catchAsync(
 
 export const createHabit = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const habit = await Habit.create(req.body);
+    const habit = await Habit.create({ ...req.body, user: req.user.id });
 
     if (!habit) {
       return next(

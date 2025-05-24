@@ -5,19 +5,20 @@ import * as authController from './../controllers/authController';
 
 const habitRouter = express.Router({ mergeParams: true });
 
+habitRouter.use(authController.protect);
+
 habitRouter
   .route('/')
   .get(
-    authController.protect,
-    authController.restrictTo(['admin']),
+    authController.restrictTo(['admin', 'user']),
     habitController.getAllHabits
   )
   .post(habitController.createHabit);
 
 habitRouter
   .route('/:id')
-  .get(authController.protect, habitController.getHabit)
-  .patch(authController.protect, habitController.updateHabit)
-  .delete(authController.protect, habitController.deleteHabit);
+  .get(habitController.getHabit)
+  .patch(habitController.updateHabit)
+  .delete(habitController.deleteHabit);
 
 export default habitRouter;
