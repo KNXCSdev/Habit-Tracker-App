@@ -1,70 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --backgroundPrimary: #ffffff;
+  --backgroundSecondary: #f8fafc;
+  --backgroundStreak: #dcfce7;
+  --backgroundIcon: #f1f5f9;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-primary: #11182b;
+  --text-accent: #6a7282;
+  --text-secondary: #2563eb;
+  --text-tertiary: #9fa9b7;
+  --text-success: #22c55e;
+  --error: #ef4444;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --background: #ffffff;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+@theme {
+  --color-backgroundPrimary: var(--backgroundPrimary);
+  --color-backgroundSecondary: var(--backgroundSecondary);
+  --color-backgroundStreak: var(--backgroundStreak);
+  --color-backgroundIcon: var(--backgroundIcon);
+
+  --color-textPrimary: var(--text-primary);
+  --color-textAccent: var(--text-accent);
+  --color-textSecondary: var(--text-secondary);
+  --color-textTertiary: var(--text-tertiary);
+  --color-textSuccess: var(--text-success);
+  --color-error: var(--error);
+
+  --color-background: var(--background);
+
+  --default-font-family: "Roboto", sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Optional: Dark mode overrides */
+/* body.dark {
+  --backgroundPrimary: #0f172a;
+  --backgroundSecondary: #1e293b;
+  --primary: #f8fafc;
+  --secondary: #60a5fa; */
+/* etc... */
+/* } */

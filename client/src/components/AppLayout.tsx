@@ -1,0 +1,18 @@
+import { Outlet } from "react-router";
+
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+
+function AppLayout() {
+  return (
+    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
+      <Navigation />
+      <main className="mx-auto flex w-full max-w-[85rem] flex-col gap-10 py-10">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default AppLayout;
