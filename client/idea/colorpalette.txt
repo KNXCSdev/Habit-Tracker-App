@@ -1,8 +1,13 @@
 | Purpose      | Color         | Hex       |
 | ------------ | ------------- | --------- |
-| Primary      | Emerald Green | `#10B981` |
-| Secondary    | Sky Blue      | `#38BDF8` |
-| Background   | Light Gray    | `#F9FAFB` |
-| Text Primary | Charcoal      | `#1F2937` |
+| Primary      | Emerald Green | `#2563EB` |
+| Background   | Light Gray    | `#F8FAFC` |
+| Text Primary | Charcoal      | `#11182B` |
 | Accent       | Soft Orange   | `#FBBF24` |
+| Iconbg        | Green light     | `#DCFCE7` |
+| streak icon        | Green      | `#22C55E` |
 | Error        | Red Rose      | `#EF4444` |
+
+
+
+green DCFCE7
