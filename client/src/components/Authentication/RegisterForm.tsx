@@ -6,8 +6,8 @@ import {
   MdOutlineLogin,
 } from "react-icons/md";
 import { HiOutlineUserCircle } from "react-icons/hi";
-import TextInput from "../TextInput";
-import FormError from "../FormError";
+import TextInput from "../../ui/TextInput";
+import FormError from "../../ui/FormError";
 
 export default function RegisterForm() {
   return (

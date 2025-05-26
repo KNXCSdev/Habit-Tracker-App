@@ -11,7 +11,7 @@ export default function Hero() {
       </p>
       <div className="flex items-center space-x-4">
         <a
-          href="/register"
+          href="/app"
           className="bg-textSecondary rounded-md border-none px-12 py-3 text-xl font-medium text-white transition-all hover:cursor-pointer hover:bg-blue-700"
         >
           Get Started

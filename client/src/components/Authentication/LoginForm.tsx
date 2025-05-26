@@ -1,7 +1,7 @@
 // LoginForm.tsx
 import { MdMailOutline, MdLockOutline, MdOutlineLogin } from "react-icons/md";
-import TextInput from "../TextInput";
-import FormError from "../FormError";
+import TextInput from "../../ui/TextInput";
+import FormError from "../../ui/FormError";
 
 export default function LoginForm() {
   return (

@@ -1,9 +1,9 @@
 import { Outlet } from "react-router";
 
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+import Navigation from "../Navigations/Navigation";
+import Footer from "../Footer";
 
-function AppLayout() {
+function PublicLayout() {
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       <Navigation />
@@ -15,4 +15,4 @@ function AppLayout() {
   );
 }
 
-export default AppLayout;
+export default PublicLayout;
