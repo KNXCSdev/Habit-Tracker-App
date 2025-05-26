@@ -47,7 +47,7 @@ export default function AppNavigation() {
             }
           >
             <img
-              src="/hero.png"
+              src="/default.jpg"
               alt="Profile picture"
               className="block aspect-square w-[2rem] rounded-full object-cover object-[center_center] outline-2"
             />
