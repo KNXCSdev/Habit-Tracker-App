@@ -10,6 +10,8 @@ import AppLayout from "./components/Layouts/AppLayout";
 import PublicLayout from "./components/Layouts/PublicLayout";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import Habits from "./pages/Habits";
+import PageNotFound from "./ui/PageNotFound";
 
 function App() {
   return (
@@ -34,10 +36,11 @@ function App() {
           >
             <Route index element={<Navigate replace to="dashboard" />} />{" "}
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="habits" element={<Habits />} />
+            {/* <Route path="profile" element={<Profile />} /> */}
           </Route>
 
-          {/* Optional 404 route */}
-          {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

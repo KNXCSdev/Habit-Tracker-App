@@ -1,4 +1,5 @@
 import { HiArrowRight } from "react-icons/hi";
+import { Link } from "react-router";
 
 interface HabitCardProps {
   title: string;
@@ -24,11 +25,12 @@ export default function HabitCard({
           <img src={image} alt="" className="w-full rounded-lg" />
         </div>
       </div>
-      <div className="bg-backgroundIcon mt-4 inline-flex w-fit rounded-lg px-4 py-2 font-medium">
-        <a className="text-textAccent hover:text-primary flex cursor-pointer items-center gap-2 transition">
-          View Details <HiArrowRight />
-        </a>
-      </div>
+      <Link
+        className="text-textAccent hover:text-primary bg-backgroundIcon hover:text-background hover:bg-textSecondary mt-4 inline-flex w-fit cursor-pointer items-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
+        to={`/app/habit/:habitId`}
+      >
+        View Details <HiArrowRight />
+      </Link>
     </div>
   );
 }
