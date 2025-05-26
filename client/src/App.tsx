@@ -12,6 +12,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Habits from "./pages/Habits";
 import PageNotFound from "./ui/PageNotFound";
+import HabitDetails from "./pages/HabitDetails";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route index element={<Navigate replace to="dashboard" />} />{" "}
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="habits" element={<Habits />} />
+            <Route path="habits/:habitId" element={<HabitDetails />} />
             {/* <Route path="profile" element={<Profile />} /> */}
           </Route>
 
