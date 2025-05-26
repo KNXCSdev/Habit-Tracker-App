@@ -4,6 +4,7 @@ import AppLayout from "./components/AppLayout";
 import SpinnerFullPage from "./pages/SpinnerFullPage";
 import Hero from "./pages/Hero";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         >
           <Route index element={<Hero />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
         {/* <Route path="*" element={<PageNotFound />} /> */}
       </Routes>
