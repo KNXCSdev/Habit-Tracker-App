@@ -1,6 +1,8 @@
 import { HiOutlinePlusCircle } from "react-icons/hi";
 
 import HabitCardMinimalistic from "../components/Habits/HabitCardMinimalistic";
+import IconPicker from "../ui/IconPicker";
+import HabitForm from "../components/Habits/HabitForm";
 
 export default function Habits() {
   return (
@@ -36,6 +38,7 @@ export default function Habits() {
             image="/hero.png"
             habitId=""
           />
+          <HabitForm />
         </div>
       </section>
     </div>
