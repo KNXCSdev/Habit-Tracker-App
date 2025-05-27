@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, ChangeEvent } from "react";
 
 interface TextInputProps {
   id: string;
@@ -7,6 +7,8 @@ interface TextInputProps {
   placeholder?: string;
   icon?: ReactNode;
   required?: boolean;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function TextInput({
@@ -16,6 +18,8 @@ export default function TextInput({
   placeholder = "",
   icon,
   required = false,
+  value,
+  onChange,
 }: TextInputProps) {
   return (
     <div>
@@ -38,6 +42,8 @@ export default function TextInput({
           placeholder={placeholder}
           className={`text-textPrimary bg-background block w-full rounded-lg border border-gray-300 p-2.5 ${icon ? "ps-10" : ""} placeholder-textTertiary/90 font-light outline-none focus:border-blue-500 focus:ring-blue-500`}
           required={required}
+          value={value}
+          onChange={onChange}
         />
       </div>
     </div>

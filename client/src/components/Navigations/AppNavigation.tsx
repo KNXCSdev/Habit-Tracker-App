@@ -1,3 +1,4 @@
+import { HiOutlineMoon, HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { NavLink } from "react-router";
 
 export default function AppNavigation() {
@@ -36,6 +37,20 @@ export default function AppNavigation() {
           >
             Habits
           </NavLink>
+        </li>
+        <li>
+          <button
+            className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
+          >
+            <HiOutlineMoon />
+          </button>
+        </li>
+        <li>
+          <button
+            className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
+          >
+            <HiOutlineArrowRightOnRectangle />
+          </button>
         </li>
         <li>
           <NavLink

@@ -1,9 +1,28 @@
-// LoginForm.tsx
+import { useState } from "react";
 import { MdMailOutline, MdLockOutline, MdOutlineLogin } from "react-icons/md";
 import TextInput from "../../ui/TextInput";
 import FormError from "../../ui/FormError";
+import { useLogin } from "./useLogin";
 
 export default function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [formError, setFormError] = useState("");
+  const { login, isPending } = useLogin();
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    setFormError("");
+
+    if (!email || !password) {
+      setFormError("Please fill out both email and password.");
+      return;
+    }
+
+    login({ email, password });
+  }
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-6 py-16">
       <div className="w-[30rem] flex-1 rounded-lg bg-white shadow-md">
@@ -16,12 +35,14 @@ export default function LoginForm() {
               Login to continue your habit journey.
             </p>
           </div>
-          <form className="flex flex-col gap-6" action="#">
+          <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
             <TextInput
               id="email"
               label="Email address"
               placeholder="you@example.com"
               icon={<MdMailOutline />}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextInput
               id="password"
@@ -30,15 +51,20 @@ export default function LoginForm() {
               placeholder="Enter your password"
               icon={<MdLockOutline />}
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <FormError message="Incorrect email or password please try again." />
+
+            {formError && <FormError message={formError} />}
+
             <div className="mt-auto pb-5">
               <button
                 type="submit"
-                className="bg-textSecondary hover:bg-primary-700 focus:ring-primary-300 text-background text-md flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium focus:ring-4 focus:outline-none"
+                disabled={isPending}
+                className="bg-textSecondary hover:bg-primary-700 focus:ring-primary-300 text-background text-md flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium focus:ring-4 focus:outline-none disabled:opacity-50"
               >
                 <MdOutlineLogin />
-                Log in
+                {isPending ? "Logging in..." : "Log in"}
               </button>
             </div>
           </form>
