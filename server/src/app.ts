@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import userRouter from './routes/userRoutes.js';
 import habitRouter from './routes/habitRoutes.js';
 import errorController from './controllers/errorController.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -15,7 +16,9 @@ app.set('trust proxy', 1);
 
 app.use(helmet());
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+
+app.use(cookieParser());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));

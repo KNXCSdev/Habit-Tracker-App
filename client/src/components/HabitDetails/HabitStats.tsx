@@ -1,4 +1,4 @@
-import { HiOutlineChartBar } from "react-icons/hi";
+import { HiFire, HiOutlineChartBar } from "react-icons/hi";
 import HabitBreadcrumb from "./HabitBreadcrumb";
 import HabitActions from "./HabitActions";
 import { MdOutlineCalendarMonth } from "react-icons/md";
@@ -44,7 +44,7 @@ export default function HabitStats() {
         </div>
         <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
           <div className="row-span-full flex h-full items-center justify-center rounded-full bg-green-100 text-4xl text-green-700">
-            <HiOutlineChartBar />
+            <HiFire />
           </div>
           <h5 className="text-textAccent text-md self-end font-medium">
             Current Streak
