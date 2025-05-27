@@ -21,7 +21,10 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className="w-[400px] rounded-xl bg-white p-6 shadow-xl">
         <h2 className="text-textPrimary text-lg font-semibold">
           Select an Icon
