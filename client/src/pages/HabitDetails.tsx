@@ -1,4 +1,4 @@
-import HabitStats from "../components/Habits/HabitStats";
+import HabitStats from "../components/HabitDetails/HabitStats";
 
 export default function HabitDetails() {
   return <HabitStats />;

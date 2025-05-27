@@ -35,7 +35,7 @@ export default function HabitStreaksList() {
         <section className="flex flex-col gap-8">
           <header>
             <h2 className="text-textPrimary text-2xl font-medium">
-              Your Habits
+              Your Latest Habits
             </h2>
           </header>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
