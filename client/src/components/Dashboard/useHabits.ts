@@ -1,6 +1,7 @@
 // inside a component or custom hook
 import { useQuery } from "@tanstack/react-query";
-import { getAllHabitsOfAUser } from "../../api/GetAllHabitsOfAUser";
+
+import { getAllHabitsOfAUser } from "../../api/getAllHabitsOfAUser";
 import { useUser } from "../Authentication/useUser";
 
 export function useHabits() {

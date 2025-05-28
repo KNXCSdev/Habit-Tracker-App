@@ -65,9 +65,16 @@ export default function HabitStreaksList() {
             <h2 className="text-textPrimary text-2xl font-medium">Streaks</h2>
           </header>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <StreakCard title="Meditation " />
-            <StreakCard title="Journaling " />
-            <StreakCard title="Running " />
+            {habits?.map((habit) => {
+              return (
+                <StreakCard
+                  key={habit._id}
+                  streak={habit.streak}
+                  habitId={habit._id}
+                  title={habit.title}
+                />
+              );
+            })}
           </div>
         </section>
       </div>

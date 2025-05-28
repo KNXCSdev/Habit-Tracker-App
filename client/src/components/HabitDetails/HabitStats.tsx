@@ -3,15 +3,31 @@ import HabitBreadcrumb from "./HabitBreadcrumb";
 import HabitActions from "./HabitActions";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import HabitChart from "./HabitChart";
+import { useHabitById } from "./useHabit";
+import { useParams } from "react-router";
+import { calculateCompletionRate } from "../../utils/calculateCompletionRate";
 
 export default function HabitStats() {
+  const { habitId } = useParams<{ habitId: string }>();
+  const { data: habit, isLoading } = useHabitById(habitId!);
+
+  if (isLoading) return <p className="mt-20 text-center">Loading...</p>;
+  if (!habit)
+    return <p className="mt-20 text-center text-red-500">Habit not found.</p>;
+
+  const completionRate = calculateCompletionRate(
+    habit.completedDates,
+    habit.frequency,
+    habit.createdAt,
+  );
+
   return (
     <div className="flex h-full flex-col gap-8">
       <HabitBreadcrumb />
       <header className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <h2 className="text-textPrimary text-4xl font-semibold">
-            Morning Run
+            {habit.title}
           </h2>
           <p className="text-textAccent font-light tracking-wide">
             Consistency is key to building lasting habits. Keep up the great
@@ -28,7 +44,7 @@ export default function HabitStats() {
             Completion Rate
           </h5>
           <p className="text-textPrimary self-start text-3xl font-semibold">
-            85%
+            {completionRate}%
           </p>
         </div>
         <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
@@ -39,7 +55,8 @@ export default function HabitStats() {
             Frequency
           </h5>
           <p className="text-textPrimary self-start text-3xl font-semibold">
-            Daily
+            {habit.frequency.charAt(0).toUpperCase() +
+              habit.frequency.slice(1)}{" "}
           </p>
         </div>
         <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
@@ -50,18 +67,19 @@ export default function HabitStats() {
             Current Streak
           </h5>
           <p className="text-textPrimary self-start text-3xl font-semibold">
-            14 days
+            {habit.streak} days
           </p>
         </div>
 
-        <div className="col-span-3">
+        <div className="col-span-3 h-full">
           <div className="bg-background h-full rounded-lg border border-gray-200 p-[1.6rem] px-6 py-6">
-            <div className="mb-6 flex flex-col gap-[0.1rem]">
+            <div className="mb-6 flex w-full flex-col gap-[0.1rem]">
               <h6 className="text-xl font-medium">Progress Overview</h6>
               <p className="text-textAccent font-light">
                 Your daily completion trend for the last 30 days.
               </p>
             </div>
+
             <HabitChart />
           </div>
         </div>
