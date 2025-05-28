@@ -3,6 +3,7 @@
 :root {
   --backgroundPrimary: #ffffff;
   --backgroundSecondary: #f8fafc;
+  --text-white: #f8fafc;
   --backgroundStreak: #dcfce7;
   --backgroundIcon: #f1f5f9;
 
@@ -23,6 +24,7 @@
   --color-backgroundIcon: var(--backgroundIcon);
 
   --color-textPrimary: var(--text-primary);
+  --color-textWhite: var(--text-white);
   --color-textAccent: var(--text-accent);
   --color-textSecondary: var(--text-secondary);
   --color-textTertiary: var(--text-tertiary);
@@ -33,6 +35,25 @@
 
   --default-font-family: "Roboto", sans-serif;
 }
+
+&.dark-mode {
+  --backgroundPrimary: #1e293b;
+  --backgroundSecondary: #0f1a2a;
+  --backgroundStreak: #14532d;
+  --backgroundIcon: #1e293b;
+
+  --text-primary: #f8fafc;
+  --text-white: #f8fafc;
+  --text-accent: #94a3b8;
+
+  --text-tertiary: #64748b;
+  --text-success: #4ade80;
+  --error: #f87171;
+
+  --background: #18212f;
+}
+
+@custom-variant dark (&:where(.dark-mode, .dark-mode *));
 
 /* Optional: Dark mode overrides */
 /* body.dark {

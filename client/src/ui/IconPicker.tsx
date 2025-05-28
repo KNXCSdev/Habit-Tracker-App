@@ -25,7 +25,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="w-[400px] rounded-xl bg-white p-6 shadow-xl">
+      <div className="bg-background w-[400px] rounded-xl p-6 shadow-xl">
         <h2 className="text-textPrimary text-lg font-semibold">
           Select an Icon
         </h2>
@@ -38,7 +38,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
           placeholder="Search icons..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="mb-4 w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+          className="border-backgroundIcon text-textWhite mb-4 w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <div className="grid max-h-70 grid-cols-6 gap-3 overflow-y-auto px-1 pt-2">
@@ -46,10 +46,10 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
             <button
               key={name}
               onClick={() => setSelected(name)}
-              className={`hover:bg-backgroundIcon flex cursor-pointer items-center justify-center rounded-lg border p-2 ${
+              className={`hover:bg-backgroundIcon text-textAccent flex cursor-pointer items-center justify-center rounded-lg border p-2 ${
                 selected === name
-                  ? "border-textSecondary bg-textSecondary outline-background text-background hover:bg-textSecondary ring-4 ring-blue-500 outline-[0.5px]"
-                  : "border-gray-200"
+                  ? "border-textSecondary bg-textSecondary outline-background text-textWhite hover:bg-textSecondary ring-4 ring-blue-500 outline-[0.5px]"
+                  : "border-backgroundIcon"
               }`}
             >
               <Icon fontSize="medium" />

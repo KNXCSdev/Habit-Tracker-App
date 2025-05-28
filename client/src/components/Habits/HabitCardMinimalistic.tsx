@@ -23,7 +23,7 @@ export default function HabitCardMinimalistic({
   return (
     <Link
       to={`/app/habit/${habitId}`}
-      className="group block rounded-lg bg-white px-3 py-4 shadow-md transition hover:cursor-pointer hover:shadow-lg"
+      className="group bg-background block rounded-lg px-3 py-4 shadow-md transition hover:cursor-pointer hover:shadow-lg"
     >
       <div className="grid grid-cols-[0.3fr_1fr_0.3fr] items-start gap-4">
         <div className="bg-backgroundIcon flex h-full items-center justify-center rounded-lg">

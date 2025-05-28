@@ -119,7 +119,7 @@ export default function HabitForm({
 
               <select
                 id="frequency"
-                className="text-textAccent bg-background block w-full rounded-lg border border-gray-300 p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
+                className="text-textAccent bg-background border-backgroundIcon block w-full rounded-lg border p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
                 value={frequency}
                 onChange={(e) => setFrequency(e.target.value)}
                 required
@@ -142,7 +142,7 @@ export default function HabitForm({
                 Cancel
               </button>
               <button
-                className="bg-textSecondary text-background hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
+                className="bg-textSecondary text-textWhite hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
                 type="submit"
                 disabled={isCreating}
               >

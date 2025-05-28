@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export default function Hero() {
   return (
     <div className="text-textPrimary flex h-full flex-col items-center justify-center rounded-3xl bg-[linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/hero.png')] bg-cover bg-center text-center">
-      <h1 className="text-background mb-6 text-6xl font-medium">
+      <h1 className="text-textWhite mb-6 text-6xl font-medium">
         Build Better Habits,<br></br> One Day at a Time
       </h1>
       <p className="mb-12 text-xl leading-8 font-light tracking-wider text-gray-300">

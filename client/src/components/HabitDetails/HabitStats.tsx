@@ -37,7 +37,7 @@ export default function HabitStats() {
         </div>
       </header>
       <div className="grid h-full grid-cols-3 grid-rows-[auto_1fr_auto] gap-6">
-        <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
+        <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
           <div className="row-span-full flex h-full items-center justify-center rounded-full bg-blue-100 text-4xl text-blue-700">
             <HiOutlineChartBar />
           </div>
@@ -48,7 +48,7 @@ export default function HabitStats() {
             {completionRate}%
           </p>
         </div>
-        <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
+        <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
           <div className="row-span-full flex h-full items-center justify-center rounded-full bg-indigo-100 text-4xl text-indigo-700">
             <MdOutlineCalendarMonth />
           </div>
@@ -60,7 +60,7 @@ export default function HabitStats() {
               habit.frequency.slice(1)}{" "}
           </p>
         </div>
-        <div className="bg-background grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border border-gray-200 p-[1.6rem]">
+        <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
           <div className="row-span-full flex h-full items-center justify-center rounded-full bg-green-100 text-4xl text-green-700">
             <HiFire />
           </div>
@@ -73,9 +73,11 @@ export default function HabitStats() {
         </div>
 
         <div className="col-span-3 h-full">
-          <div className="bg-background h-full rounded-lg border border-gray-200 p-[1.6rem] px-6 py-6">
+          <div className="bg-background border-backgroundIcon h-full rounded-lg border p-[1.6rem] px-6 py-6">
             <div className="mb-6 flex w-full flex-col gap-[0.1rem]">
-              <h6 className="text-xl font-medium">Progress Overview</h6>
+              <h6 className="text-textPrimary text-xl font-medium">
+                Progress Overview
+              </h6>
               <p className="text-textAccent font-light">
                 Your daily completion trend for the last 30 days.
               </p>
