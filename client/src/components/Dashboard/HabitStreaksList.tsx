@@ -12,8 +12,6 @@ export default function HabitStreaksList() {
   const { user, isPending } = useUser();
   const { habits, isPending: isPendingHabits } = useHabits();
 
-  console.log(habits);
-
   const handleIsOpenModal = (value: boolean) => {
     setIsOpenModal(value);
   };
@@ -53,8 +51,9 @@ export default function HabitStreaksList() {
                 <HabitCard
                   key={habit._id}
                   title={habit.title}
-                  description="5 minutes of mindfulness to start your day"
-                  image="/hero.png"
+                  description={habit.description}
+                  habitId={habit._id}
+                  iconName={habit.icon}
                 />
               );
             })}

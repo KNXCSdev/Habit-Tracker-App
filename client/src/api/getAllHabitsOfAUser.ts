@@ -1,10 +1,13 @@
 // src/api/getAllHabits.ts
 import axios from "axios";
 
-interface User {
+interface Habit {
   _id: string;
-  name: string;
-  email: string;
+  title: string;
+  description: string;
+  icon: string;
+  frequency: string;
+  streak: number;
 }
 
 export async function getAllHabitsOfAUser(userId: string) {
@@ -15,5 +18,5 @@ export async function getAllHabitsOfAUser(userId: string) {
     },
   );
 
-  return res.data.data;
+  return (res.data as { data: Habit[] }).data;
 }

@@ -3,8 +3,14 @@ import HabitCardMinimalistic from "./HabitCardMinimalistic";
 import HabitForm from "./HabitForm";
 import { useState } from "react";
 
+import { useHabits } from "../Dashboard/useHabits";
+import SpinnerFullPage from "../../pages/SpinnerFullPage";
+
 export default function HabitsList() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const { habits, isPending } = useHabits();
+
+  if (isPending) return <SpinnerFullPage />;
 
   const handleIsOpenModal = (value: boolean) => {
     setIsOpenModal(value);
@@ -28,24 +34,18 @@ export default function HabitsList() {
 
       <section className="flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <HabitCardMinimalistic
-            title="Morning Meditation"
-            frequency="Daily Routine"
-            image="/hero.png"
-            habitId=""
-          />
-          <HabitCardMinimalistic
-            title="Daily Reading"
-            frequency="Weekly Routine"
-            image="/hero.png"
-            habitId=""
-          />
-          <HabitCardMinimalistic
-            title="Evening Journal"
-            frequency="Monthly Routine"
-            image="/hero.png"
-            habitId=""
-          />
+          {habits?.map((habit) => {
+            return (
+              <HabitCardMinimalistic
+                key={habit._id}
+                title={habit.title}
+                frequency={habit.frequency}
+                iconName={habit.icon}
+                habitId={habit._id}
+              />
+            );
+          })}
+
           {isOpenModal && <HabitForm handleIsOpenModal={handleIsOpenModal} />}
         </div>
       </section>
