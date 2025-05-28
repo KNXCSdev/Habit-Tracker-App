@@ -3,20 +3,29 @@ import HabitCard from "./HabitCard";
 import StreakCard from "../../ui/StreakCard";
 import { useState } from "react";
 import HabitForm from "../Habits/HabitForm";
+import { useUser } from "../Authentication/useUser";
+import SpinnerFullPage from "../../pages/SpinnerFullPage";
+import { useHabits } from "./useHabits";
 
 export default function HabitStreaksList() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const { user, isPending } = useUser();
+  const { habits, isPending: isPendingHabits } = useHabits();
+
+  console.log(habits);
 
   const handleIsOpenModal = (value: boolean) => {
     setIsOpenModal(value);
   };
+
+  if (isPending || isPendingHabits) return <SpinnerFullPage />;
 
   return (
     <>
       <div className="flex flex-col gap-12">
         <header className="flex items-center justify-between">
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold">Welcome back, Sarah!</h1>
+            <h1 className="text-4xl font-bold">Welcome back, {user?.name}!</h1>
             <p className="text-textAccent">
               Let's keep those good habits going
             </p>
@@ -39,21 +48,16 @@ export default function HabitStreaksList() {
             </h2>
           </header>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <HabitCard
-              title="Morning Meditation"
-              description="5 minutes of mindfulness to start your day"
-              image="/hero.png"
-            />
-            <HabitCard
-              title="Daily Reading"
-              description="Read 10 pages from a personal growth book"
-              image="/hero.png"
-            />
-            <HabitCard
-              title="Evening Journal"
-              description="Reflect on your day with 3 things you're grateful for"
-              image="/hero.png"
-            />
+            {habits?.map((habit) => {
+              return (
+                <HabitCard
+                  key={habit._id}
+                  title={habit.title}
+                  description="5 minutes of mindfulness to start your day"
+                  image="/hero.png"
+                />
+              );
+            })}
           </div>
         </section>
 
