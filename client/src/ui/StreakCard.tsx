@@ -3,19 +3,21 @@ import { Link } from "react-router";
 
 interface HabitCardProps {
   title: string;
+  habitId: string;
+  streak: number;
 }
 
-export default function StreakCard({ title }: HabitCardProps) {
+export default function StreakCard({ title, habitId, streak }: HabitCardProps) {
   return (
     <div className="rounded-lg bg-white px-6 py-6 shadow-md">
       <div className="grid grid-cols-[1fr_0.3fr] items-start gap-4">
         <div>
-          <h2 className="text-textPrimary mb-2 text-2xl font-semibold">
+          <h2 className="text-textPrimary mb-2 text-xl font-semibold">
             {title} Streak
           </h2>
           <p className="text-textAccent text-md mb-1">
-            <span className="text-textSuccess font-medium">7 days</span> in a
-            row
+            <span className="text-textSuccess font-medium">{streak} days</span>{" "}
+            in a row
           </p>
         </div>
         <div className="bg-backgroundStreak flex h-full items-center justify-center rounded-lg">
@@ -33,7 +35,7 @@ export default function StreakCard({ title }: HabitCardProps) {
       </div>
       <Link
         className="text-textAccent hover:text-primary bg-backgroundIcon hover:text-background hover:bg-textSecondary mt-4 inline-flex w-fit cursor-pointer items-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
-        to="/app/streak/:habitId"
+        to={`/app/habit/${habitId}`}
       >
         View Details <HiArrowRight />
       </Link>
