@@ -10,6 +10,14 @@ const habitSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
+  icon: {
+    type: String,
+    default: 'CheckCircleIcon',
+  },
   frequency: {
     type: String,
     enum: ['daily', 'weekly'],

@@ -10,7 +10,6 @@ export function useLogin() {
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       signIn({ email, password }),
     onSuccess: (user) => {
-      console.log(user);
       queryClient.setQueryData(["user"], user);
       navigate("/app/dashboard");
     },
