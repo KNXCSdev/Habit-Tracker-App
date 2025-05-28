@@ -4,14 +4,18 @@ import { getUser } from "../../api/getUser";
 
 export function useUser() {
   const {
-    data: user,
+    data,
     isLoading: isPending,
     isError,
   } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
-    retry: false, // don't retry on failure
+    retry: false,
   });
 
-  return { user, isPending, isError };
+  return {
+    user: isError ? null : data,
+    isPending,
+    isError,
+  };
 }

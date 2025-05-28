@@ -3,6 +3,7 @@ import { MdMailOutline, MdLockOutline, MdOutlineLogin } from "react-icons/md";
 import TextInput from "../../ui/TextInput";
 import FormError from "../../ui/FormError";
 import { useLogin } from "./useLogin";
+import { Link } from "react-router";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -70,12 +71,12 @@ export default function LoginForm() {
           </form>
           <p className="text-textAccent mt-auto text-center text-sm font-light">
             Don’t have an account yet?{" "}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="text-textSecondary font-medium hover:underline"
             >
               Register here
-            </a>
+            </Link>
           </p>
         </div>
       </div>

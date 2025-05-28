@@ -4,8 +4,9 @@ import StreakCard from "../../ui/StreakCard";
 import { useState } from "react";
 import HabitForm from "../Habits/HabitForm";
 import { useUser } from "../Authentication/useUser";
-import SpinnerFullPage from "../../pages/SpinnerFullPage";
+
 import { useHabits } from "./useHabits";
+import Spinner from "../../ui/Spinner";
 
 export default function HabitStreaksList() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -16,7 +17,7 @@ export default function HabitStreaksList() {
     setIsOpenModal(value);
   };
 
-  if (isPending || isPendingHabits) return <SpinnerFullPage />;
+  if (isPending || isPendingHabits) return <Spinner />;
 
   return (
     <>

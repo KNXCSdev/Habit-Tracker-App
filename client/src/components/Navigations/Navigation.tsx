@@ -1,20 +1,22 @@
 import { NavLink, useLocation } from "react-router";
+import { useUser } from "../Authentication/useUser";
 
 export default function Navigation() {
   const location = useLocation();
   const isLoginPage =
     location.pathname === "/login" || location.pathname === "/register";
+  const { user } = useUser();
 
   return (
     <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-3 shadow-sm">
       <div className="flex items-center gap-2 text-4xl font-semibold">
-        <a href="/">
+        <NavLink to="/">
           <img
             src="/logoTrack.png"
             width={180}
             className="h-[3rem] w-[11rem] object-cover"
           />
-        </a>
+        </NavLink>
       </div>
       {!isLoginPage ? (
         <>
@@ -51,12 +53,14 @@ export default function Navigation() {
             >
               Get Started
             </NavLink>
-            <a
-              href="/login"
-              className="bg-backgroundIcon text-textAccent rounded-lg border border-gray-300 px-6 py-2 font-semibold hover:cursor-pointer"
-            >
-              Login
-            </a>
+            {!user && (
+              <NavLink
+                to="/login"
+                className="bg-backgroundIcon text-textAccent rounded-lg border border-gray-300 px-6 py-2 font-semibold hover:cursor-pointer"
+              >
+                Login
+              </NavLink>
+            )}
           </div>
         </>
       ) : null}
