@@ -5,18 +5,44 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import TextInput from "../../ui/TextInput";
 import { ICON_OPTIONS } from "../../config/iconOptions";
 import IconPicker from "../../ui/IconPicker";
+import { useCreateHabit } from "./useCreateHabit";
 
 export default function HabitForm({
   handleIsOpenModal,
 }: {
   handleIsOpenModal: (value: boolean) => void;
 }) {
+  const { addHabit, isCreating } = useCreateHabit();
   const [iconPickerOpen, setIconPickerOpen] = useState(false);
+
   const [selectedIconName, setSelectedIconName] = useState<string | null>(null);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [frequency, setFrequency] = useState("");
 
   const SelectedIconComponent =
     ICON_OPTIONS.find((icon) => icon.name === selectedIconName)?.icon ||
     CheckCircleIcon;
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!title || !frequency || !description) return;
+
+    addHabit(
+      {
+        title,
+        frequency,
+        description,
+        icon: selectedIconName ?? "CheckCircleIcon",
+      },
+      {
+        onSettled: () => {
+          handleIsOpenModal(false);
+        },
+      },
+    );
+  }
 
   return (
     <div
@@ -37,12 +63,26 @@ export default function HabitForm({
             </p>
           </div>
           <hr className="text-textAccent/20" />
-          <form className="flex flex-col gap-6 px-[2rem]">
+          <form
+            className="flex flex-grow flex-col gap-6 px-[2rem]"
+            onSubmit={handleSubmit}
+          >
             <TextInput
               id="title"
               label="Habit Title"
               placeholder="e.g., Morning Jog"
               required={true}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <TextInput
+              id="description"
+              label="Description"
+              placeholder="e.g., Jog every morning at 7am"
+              required={true}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
 
             <div>
@@ -54,7 +94,7 @@ export default function HabitForm({
               </label>
               <div className="mb-2 flex items-center gap-4">
                 <div className="bg-backgroundIcon text-textTertiary flex h-10 w-10 items-center justify-center rounded-full">
-                  <SelectedIconComponent fontSize="medium" />
+                  <SelectedIconComponent className="h-6 w-6" />
                 </div>
                 <button
                   className="bg-background text-textAccent border-textPrimary/20 hover:bg-backgroundSecondary cursor-pointer rounded-lg border px-5 py-2 text-sm font-light"
@@ -80,9 +120,11 @@ export default function HabitForm({
               <select
                 id="frequency"
                 className="text-textAccent bg-background block w-full rounded-lg border border-gray-300 p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
-                defaultValue={"select"}
+                value={frequency}
+                onChange={(e) => setFrequency(e.target.value)}
+                required
               >
-                <option value="select" disabled>
+                <option value="" disabled>
                   Select frequency
                 </option>
                 <option value="daily">Daily</option>
@@ -90,22 +132,24 @@ export default function HabitForm({
                 <option value="monthly">Monthly</option>
               </select>
             </div>
-          </form>
 
-          <div className="border-t-textAccent/20 mt-auto flex items-center justify-end gap-2 border-t px-[2rem] pt-5">
-            <button
-              onClick={() => handleIsOpenModal(false)}
-              className="bg-backgroundIcon text-textPrimary hover:bg-backgroundIcon/60 cursor-pointer rounded-lg px-6 py-2"
-            >
-              Cancel
-            </button>
-            <button
-              className="bg-textSecondary text-background hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
-              type="submit"
-            >
-              Save Habit
-            </button>
-          </div>
+            <div className="border-t-textAccent/20 mt-auto flex items-center justify-end gap-2 border-t pt-5">
+              <button
+                onClick={() => handleIsOpenModal(false)}
+                type="button"
+                className="bg-backgroundIcon text-textPrimary hover:bg-backgroundIcon/60 cursor-pointer rounded-lg px-6 py-2"
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-textSecondary text-background hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
+                type="submit"
+                disabled={isCreating}
+              >
+                {isCreating ? "Saving..." : "Save Habit"}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 

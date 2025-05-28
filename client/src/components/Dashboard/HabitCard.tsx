@@ -1,17 +1,25 @@
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router";
+import { ICON_OPTIONS } from "../../config/iconOptions";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 interface HabitCardProps {
   title: string;
   description: string;
-  image: string;
+  iconName: string;
+  habitId: string;
 }
 
 export default function HabitCard({
   title,
   description,
-  image,
+  iconName,
+  habitId,
 }: HabitCardProps) {
+  const SelectedIconComponent =
+    ICON_OPTIONS.find((icon) => icon.name === iconName)?.icon ||
+    CheckCircleIcon;
+
   return (
     <div className="rounded-lg bg-white px-6 py-6 shadow-md">
       <div className="grid grid-cols-[1fr_0.3fr] items-start gap-4">
@@ -22,12 +30,15 @@ export default function HabitCard({
           <p className="text-textAccent text-md mb-1">{description}</p>
         </div>
         <div className="bg-backgroundIcon flex h-full items-center justify-center rounded-lg">
-          <img src={image} alt="" className="w-full rounded-lg" />
+          <SelectedIconComponent
+            style={{ height: 40, width: 40 }}
+            className="text-textTertiary"
+          />
         </div>
       </div>
       <Link
         className="text-textAccent hover:text-primary bg-backgroundIcon hover:text-background hover:bg-textSecondary mt-4 inline-flex w-fit cursor-pointer items-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
-        to={`/app/habit/:habitId`}
+        to={`/app/habit/${habitId}`}
       >
         View Details <HiArrowRight />
       </Link>
