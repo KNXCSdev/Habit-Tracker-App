@@ -9,6 +9,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import TextInput from "../../ui/TextInput";
 import FormError from "../../ui/FormError";
 import { useRegister } from "./useRegister";
+import { Link } from "react-router";
 
 export default function RegisterForm() {
   const { register, isPending } = useRegister();
@@ -35,6 +36,7 @@ export default function RegisterForm() {
     register(
       { name, email, password, passwordConfirm },
       {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
           setError(err?.response?.data?.message || "Signup failed.");
         },
@@ -102,12 +104,12 @@ export default function RegisterForm() {
           </form>
           <p className="text-textAccent mt-auto text-center text-sm font-light">
             Already have an account?{" "}
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="text-textSecondary font-medium hover:underline"
             >
               Sign in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

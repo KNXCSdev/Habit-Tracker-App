@@ -1,7 +1,11 @@
 import { HiOutlineMoon, HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { NavLink } from "react-router";
+import { useLogout } from "../Authentication/useLogout";
+import { MoonLoader } from "react-spinners";
 
 export default function AppNavigation() {
+  const { isPending, logoutUser } = useLogout();
+
   return (
     <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-1 shadow-sm">
       <div className="flex items-center gap-2 text-4xl font-semibold">
@@ -48,8 +52,13 @@ export default function AppNavigation() {
         <li>
           <button
             className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
+            onClick={() => logoutUser()}
           >
-            <HiOutlineArrowRightOnRectangle />
+            {isPending ? (
+              <MoonLoader size={24} color="blue" />
+            ) : (
+              <HiOutlineArrowRightOnRectangle />
+            )}
           </button>
         </li>
         <li>

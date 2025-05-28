@@ -4,13 +4,14 @@ import HabitForm from "./HabitForm";
 import { useState } from "react";
 
 import { useHabits } from "../Dashboard/useHabits";
-import SpinnerFullPage from "../../pages/SpinnerFullPage";
+
+import Spinner from "../../ui/Spinner";
 
 export default function HabitsList() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const { habits, isPending } = useHabits();
 
-  if (isPending) return <SpinnerFullPage />;
+  if (isPending) return <Spinner />;
 
   const handleIsOpenModal = (value: boolean) => {
     setIsOpenModal(value);

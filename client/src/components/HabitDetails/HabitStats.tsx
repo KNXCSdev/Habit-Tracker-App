@@ -6,12 +6,13 @@ import HabitChart from "./HabitChart";
 import { useHabitById } from "./useHabit";
 import { useParams } from "react-router";
 import { calculateCompletionRate } from "../../utils/calculateCompletionRate";
+import Spinner from "../../ui/Spinner";
 
 export default function HabitStats() {
   const { habitId } = useParams<{ habitId: string }>();
   const { data: habit, isLoading } = useHabitById(habitId!);
 
-  if (isLoading) return <p className="mt-20 text-center">Loading...</p>;
+  if (isLoading) return <Spinner />;
   if (!habit)
     return <p className="mt-20 text-center text-red-500">Habit not found.</p>;
 

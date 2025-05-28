@@ -32,10 +32,13 @@ export const getUser = catchAsync(
 
 export const getCurrentUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const user = await User.findOne(req.user);
+    if (!req.user?.id) {
+      return next(new AppError('Not logged in', 401));
+    }
 
+    const user = await User.findById(req.user.id);
     if (!user) {
-      return next(new AppError('Something went really wrong!', 404));
+      return next(new AppError('User not found', 404));
     }
 
     res.status(200).json({
