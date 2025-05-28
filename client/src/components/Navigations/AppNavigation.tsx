@@ -1,10 +1,16 @@
-import { HiOutlineMoon, HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
+import {
+  HiOutlineMoon,
+  HiOutlineArrowRightOnRectangle,
+  HiOutlineSun,
+} from "react-icons/hi2";
 import { NavLink } from "react-router";
 import { useLogout } from "../Authentication/useLogout";
 import { MoonLoader } from "react-spinners";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 export default function AppNavigation() {
   const { isPending, logoutUser } = useLogout();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-1 shadow-sm">
@@ -45,8 +51,9 @@ export default function AppNavigation() {
         <li>
           <button
             className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
+            onClick={toggleDarkMode}
           >
-            <HiOutlineMoon />
+            {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
           </button>
         </li>
         <li>

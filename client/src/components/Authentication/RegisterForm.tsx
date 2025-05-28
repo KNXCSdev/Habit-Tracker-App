@@ -10,6 +10,7 @@ import TextInput from "../../ui/TextInput";
 import FormError from "../../ui/FormError";
 import { useRegister } from "./useRegister";
 import { Link } from "react-router";
+import { PulseLoader } from "react-spinners";
 
 export default function RegisterForm() {
   const { register, isPending } = useRegister();
@@ -95,10 +96,15 @@ export default function RegisterForm() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="bg-textSecondary hover:bg-primary-700 focus:ring-primary-300 text-background text-md flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium focus:ring-4 focus:outline-none"
+                className="bg-textSecondary focus:ring-primary-300 text-background text-md flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium hover:bg-blue-700 focus:ring-4 focus:outline-none"
               >
-                <MdOutlineLogin />
-                {isPending ? "Signing up..." : "Sign up"}
+                {isPending ? (
+                  <PulseLoader size={20} color="#0f38ff" />
+                ) : (
+                  <>
+                    <MdOutlineLogin /> Sign up
+                  </>
+                )}
               </button>
             </div>
           </form>

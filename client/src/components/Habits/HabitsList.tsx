@@ -20,7 +20,7 @@ export default function HabitsList() {
   return (
     <div className="flex flex-col gap-12">
       <header className="flex items-center justify-between">
-        <h1 className="text-4xl font-bold">My Habits</h1>
+        <h1 className="text-textPrimary text-4xl font-bold">My Habits</h1>
 
         <button
           onClick={() => setIsOpenModal(!isOpenModal)}

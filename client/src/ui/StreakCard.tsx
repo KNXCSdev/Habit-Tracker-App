@@ -9,7 +9,7 @@ interface HabitCardProps {
 
 export default function StreakCard({ title, habitId, streak }: HabitCardProps) {
   return (
-    <div className="rounded-lg bg-white px-6 py-6 shadow-md">
+    <div className="bg-background rounded-lg px-6 py-6 shadow-md">
       <div className="grid grid-cols-[1fr_0.3fr] items-start gap-4">
         <div>
           <h2 className="text-textPrimary mb-2 text-xl font-semibold">
