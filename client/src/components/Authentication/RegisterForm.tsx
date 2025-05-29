@@ -39,7 +39,7 @@ export default function RegisterForm() {
       {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onError: (err: any) => {
-          setError(err?.response?.data?.message || "Signup failed.");
+          setError(err?.message || "Signup failed.");
         },
       },
     );

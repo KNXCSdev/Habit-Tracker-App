@@ -26,11 +26,11 @@ export async function signup({
     );
 
     return response.data;
-  } catch (err) {
-    if (err instanceof Error) {
-      throw new Error(err.message);
-    } else {
-      throw new Error("An unknown error occurred");
-    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    const message =
+      err.response?.data?.message || err.message || "An unknown error occurred";
+
+    throw new Error(message);
   }
 }
