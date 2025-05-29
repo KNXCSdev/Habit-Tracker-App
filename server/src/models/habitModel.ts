@@ -36,6 +36,7 @@ const habitSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  highestStreak: { type: Number, default: 0 },
 
   // Optional Weekly Fields
   weeklyGoal: {
@@ -60,26 +61,31 @@ const habitSchema = new mongoose.Schema({
 habitSchema.pre('save', function (next) {
   if (!this.isModified('completedDates')) return next();
 
-  const dates = [...this.completedDates]
+  const dateStrings = [...this.completedDates]
     .map((d: any) => new Date(d as Date | string).toISOString().split('T')[0])
     .sort();
 
-  let streak = 1;
+  let currentStreak = 1;
+  let maxStreak = 1;
 
-  for (let i = dates.length - 1; i > 0; i--) {
-    const current = new Date(dates[i]);
-    const prev = new Date(dates[i - 1]);
+  for (let i = dateStrings.length - 1; i > 0; i--) {
+    const current = new Date(dateStrings[i]);
+    const prev = new Date(dateStrings[i - 1]);
 
     const diff = (current.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24);
 
     if (diff === 1) {
-      streak++;
+      currentStreak++;
+      if (currentStreak > maxStreak) {
+        maxStreak = currentStreak;
+      }
     } else {
-      break;
+      currentStreak = 1;
     }
   }
 
-  this.streak = streak;
+  this.streak = currentStreak;
+  this.highestStreak = maxStreak;
   next();
 });
 

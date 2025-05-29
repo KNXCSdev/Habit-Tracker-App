@@ -8,6 +8,7 @@ interface Habit {
   icon: string;
   frequency: string;
   streak: number;
+  highestStreak: number;
   createdAt: string;
   completedDates: string[];
 }
