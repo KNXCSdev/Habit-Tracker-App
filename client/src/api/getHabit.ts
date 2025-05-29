@@ -14,12 +14,20 @@ interface Habit {
 }
 
 export async function getHabit(habitId: string) {
-  const res = await axios.get(
-    `https://trackify-bp23.onrender.com/api/v1/habits/${habitId}`,
-    {
-      withCredentials: true,
-    },
-  );
+  try {
+    const res = await axios.get(
+      `https://trackify-bp23.onrender.com/api/v1/habits/${habitId}`,
+      {
+        withCredentials: true,
+      },
+    );
 
-  return (res.data as { data: Habit }).data;
+    return (res.data as { data: Habit }).data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    const message =
+      err.response?.data?.message || err.message || "An unknown error occurred";
+
+    throw new Error(message);
+  }
 }

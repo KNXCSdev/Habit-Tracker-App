@@ -10,8 +10,11 @@ export async function markHabitAsComplete(habitId: string) {
       { withCredentials: true },
     );
     return res.data;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,
   } catch (err: any) {
-    throw new Error("Failed to mark habit as complete");
+    const message =
+      err.response?.data?.message || err.message || "An unknown error occurred";
+
+    throw new Error(message);
   }
 }
