@@ -17,6 +17,7 @@ import PageNotFound from "./ui/PageNotFound";
 import HabitDetails from "./pages/HabitDetails";
 import { Toaster } from "react-hot-toast";
 import DarkModeProvider from "./context/DarkModeContext";
+import NotYetImplemented from "./ui/NotYetImplemented";
 
 function App() {
   const queryClient = new QueryClient();
@@ -47,7 +48,7 @@ function App() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="habits" element={<Habits />} />
                 <Route path="habit/:habitId" element={<HabitDetails />} />
-                {/* <Route path="profile" element={<Profile />} /> */}
+                <Route path="profile" element={<NotYetImplemented />} />
               </Route>
 
               <Route path="*" element={<PageNotFound />} />

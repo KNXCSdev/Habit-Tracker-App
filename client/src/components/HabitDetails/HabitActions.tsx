@@ -8,11 +8,13 @@ import { useMarkHabitComplete } from "./useCompleteHabit";
 type HabitActionsProps = {
   completedDates: string[];
   frequency: string;
+  handleIsEditModalOpen: (bool: boolean) => void;
 };
 
 export default function HabitActions({
   completedDates,
   frequency,
+  handleIsEditModalOpen,
 }: HabitActionsProps) {
   const isDisabled = isHabitCompleteForCurrentPeriod(completedDates, frequency);
   const { habitId } = useParams();
@@ -37,10 +39,10 @@ export default function HabitActions({
         <button
           disabled={isDisabled || isCompleting}
           onClick={() => markComplete(habitId!)}
-          className={`flex w-full cursor-auto items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all ${
+          className={`flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all ${
             isDisabled
               ? "text-textAccent bg-backgroundIcon cursor-not-allowed"
-              : "bg-textSecondary text-textWhite hover:bg-blue-800"
+              : "bg-textSecondary text-textWhite cursor-pointer hover:bg-blue-800"
           }`}
         >
           <span>
@@ -54,7 +56,10 @@ export default function HabitActions({
             "Mark as Complete"
           )}
         </button>
-        <button className="text-textPrimary bg-backgroundIcon hover:bg-backgroundSecondary flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all">
+        <button
+          onClick={() => handleIsEditModalOpen(true)}
+          className="text-textPrimary bg-backgroundIcon hover:bg-backgroundSecondary flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
+        >
           <span>
             <HiPencil />
           </span>

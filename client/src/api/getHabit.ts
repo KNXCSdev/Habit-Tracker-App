@@ -6,7 +6,7 @@ interface Habit {
   title: string;
   description: string;
   icon: string;
-  frequency: string;
+  frequency: "daily" | "monthly" | "weekly";
   streak: number;
   highestStreak: number;
   createdAt: string;

@@ -37,16 +37,6 @@ const habitSchema = new mongoose.Schema({
     default: 0,
   },
   highestStreak: { type: Number, default: 0 },
-
-  // Optional Weekly Fields
-  weeklyGoal: {
-    type: Number,
-    default: undefined,
-  },
-  weeklyProgress: {
-    type: Number,
-    default: undefined,
-  },
 });
 
 // habitSchema.pre(/^find/, function (next) {
@@ -86,21 +76,6 @@ habitSchema.pre('save', function (next) {
 
   this.streak = currentStreak;
   this.highestStreak = maxStreak;
-  next();
-});
-
-habitSchema.pre('save', function (next) {
-  if (this.frequency === 'weekly') {
-    const today = new Date();
-    const progress = calculateWeeklyProgress(
-      this.completedDates.map(
-        (d: any) => new Date(d as Date | string).toISOString().split('T')[0]
-      ),
-      today
-    );
-    this.weeklyProgress = progress;
-  }
-
   next();
 });
 
