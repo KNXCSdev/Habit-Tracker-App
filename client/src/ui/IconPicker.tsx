@@ -38,7 +38,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
           placeholder="Search icons..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border-backgroundIcon text-textWhite mb-4 w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
+          className="border-backgroundIcon text-textPrimary mb-4 w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <div className="grid max-h-70 grid-cols-6 gap-3 overflow-y-auto px-1 pt-2">

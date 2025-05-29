@@ -15,6 +15,8 @@ habitRouter
   )
   .post(habitController.createHabit);
 
+habitRouter.route('/:id/complete').patch(habitController.completeHabit);
+
 habitRouter
   .route('/:id')
   .get(habitController.getHabit)

@@ -24,7 +24,7 @@ export default function HabitsList() {
 
         <button
           onClick={() => setIsOpenModal(!isOpenModal)}
-          className="bg-textSecondary text-background hover:bg-primary-700 focus:ring-primary-300 flex items-center gap-2 rounded-full px-8 py-3 font-medium transition-all hover:cursor-pointer focus:ring-4 focus:outline-none"
+          className="bg-textSecondary text-textWhite hover:bg-primary-700 focus:ring-primary-300 flex items-center gap-2 rounded-full px-8 py-3 font-medium transition-all hover:cursor-pointer focus:ring-4 focus:outline-none"
         >
           <span className="text-xl">
             <HiOutlinePlusCircle />
