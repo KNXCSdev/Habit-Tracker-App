@@ -20,8 +20,8 @@ const habitSchema = new mongoose.Schema({
   },
   frequency: {
     type: String,
-    enum: ['daily', 'weekly'],
-    required: [true, 'The frequency can only be daily or weekly'],
+    enum: ['daily', 'weekly', 'monthly'],
+    required: [true, 'The frequency can only be daily, weekly or monthly'],
     default: 'daily',
   },
   createdAt: {

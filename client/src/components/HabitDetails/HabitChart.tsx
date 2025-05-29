@@ -1,7 +1,15 @@
 import { getDay, parseISO } from "date-fns";
 import { ResponsiveContainer, AreaChart, Area, XAxis, Tooltip } from "recharts";
 
-const dayLabels = ["S", "M", "T", "W", "T", "F", "S"]; // Sunday = 0
+const dayLabels = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+]; // Sunday = 0
 
 interface Props {
   completedDates: string[]; // ISO date strings
