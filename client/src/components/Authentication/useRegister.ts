@@ -23,8 +23,8 @@ export function useRegister() {
       queryClient.setQueryData(["user"], user);
       navigate("/app/dashboard");
     },
-    onError: () => {
-      toast.error("Passwords dont match. Try again");
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 

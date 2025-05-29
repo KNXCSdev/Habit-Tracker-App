@@ -42,7 +42,7 @@ const sendErrorProd = (err: ErrorWithStatus, req: Request, res: Response) => {
 
     return res.status(500).json({
       status: 'error',
-      message: 'Something went very wrong!',
+      message: err.message,
     });
   }
 
@@ -90,7 +90,7 @@ export default (
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, req, res);
   } else if (process.env.NODE_ENV === 'production') {
-    let error = { ...err };
+    let error = Object.create(err);
     error.message = err.message;
 
     if (error.name === 'CastError') error = handleCastErrorDB(error);

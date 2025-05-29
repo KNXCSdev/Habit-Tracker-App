@@ -15,7 +15,7 @@ export default function AppNavigation() {
   return (
     <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-1 shadow-sm">
       <div className="flex items-center gap-2 text-4xl font-semibold">
-        <NavLink to="/">
+        <NavLink to="/app">
           <img
             src="/logoTrack.png"
             width={180}
