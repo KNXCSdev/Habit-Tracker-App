@@ -1,62 +1,47 @@
-import { eachDayOfInterval, subDays, getDay, startOfToday } from "date-fns";
-import { XAxis, Tooltip, ResponsiveContainer, AreaChart, Area } from "recharts";
+import { getDay, parseISO } from "date-fns";
+import { ResponsiveContainer, AreaChart, Area, XAxis, Tooltip } from "recharts";
 
-const generateHabitData = (dates: Date[]) =>
-  dates.map((date) => ({
-    date,
-    completed: Math.random() > 0.55,
-  }));
+const dayLabels = ["S", "M", "T", "W", "T", "F", "S"]; // Sunday = 0
 
-export default function HabitChart() {
-  const today = startOfToday();
-  const allDates = eachDayOfInterval({
-    start: subDays(today, 30),
-    end: today,
+interface Props {
+  completedDates: string[]; // ISO date strings
+}
+
+export default function HabitChart({ completedDates }: Props) {
+  // Map day index (0=Sun..6=Sat) to completion count
+  const countsPerDay = Array(7).fill(0);
+
+  completedDates.forEach((isoDate) => {
+    const dayIndex = getDay(parseISO(isoDate)); // 0 (Sun) - 6 (Sat)
+    countsPerDay[dayIndex]++;
   });
 
-  const habitData = generateHabitData(allDates);
-
-  const dayLabels = ["M", "T", "W", "T", "F", "S", "S"];
-
-  const grouped = Array(7)
-    .fill(null)
-    .map((_, i) => {
-      const days = habitData.filter(({ date }) => getDay(date) === i);
-      const completedCount = days.filter((d) => d.completed).length;
-      const avg = days.length > 0 ? completedCount / days.length : 0;
-      return {
-        label: dayLabels[i],
-        dailyCompletion: parseFloat(avg.toFixed(2)),
-      };
-    });
-
-  const completedDays = habitData.filter((d) => d.completed).length;
-  const completionRate = Math.round((completedDays / habitData.length) * 100);
+  const chartData = countsPerDay.map((count, index) => ({
+    label: dayLabels[index],
+    count,
+  }));
 
   return (
     <div className="flex h-full gap-12">
       <div className="w-1/10">
-        <p className="text-textAccent/90 mb-2">Daily Completion</p>
-
+        <p className="text-textAccent/90 mb-2">Completions by Day</p>
         <div className="flex items-end gap-2">
           <span className="text-textPrimary text-4xl font-bold">
-            {completionRate}%
+            {completedDates.length}
           </span>
         </div>
-        <div className="text-textAccent flex items-center gap-2 text-sm">
-          Last 30 Days{" "}
-          <span className="text-textSuccess text-sm font-bold">↑ 5%</span>
-        </div>
+        <div className="text-textAccent text-sm">Total completions</div>
       </div>
 
       <ResponsiveContainer width="90%" height={140}>
-        <AreaChart data={grouped}>
+        <AreaChart data={chartData}>
           <defs>
-            <linearGradient id="colorArea" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
+            <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#10b981" stopOpacity={0.4} />
+              <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
             </linearGradient>
           </defs>
+
           <XAxis
             dataKey="label"
             interval={0}
@@ -65,7 +50,7 @@ export default function HabitChart() {
             tickLine={false}
           />
           <Tooltip
-            formatter={(value: number) => `${Math.round(value * 100)}%`}
+            formatter={(value: number) => `${value} times`}
             contentStyle={{
               backgroundColor: "#ffffff",
               borderRadius: "8px",
@@ -75,10 +60,10 @@ export default function HabitChart() {
           />
           <Area
             type="monotone"
-            dataKey="dailyCompletion"
-            stroke="#3b82f6"
+            dataKey="count"
+            stroke="#10b981"
             strokeWidth={3}
-            fill="url(#colorArea)"
+            fill="url(#colorCount)"
             dot={false}
           />
         </AreaChart>

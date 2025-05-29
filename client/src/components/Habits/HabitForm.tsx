@@ -1,24 +1,47 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import TextInput from "../../ui/TextInput";
 import { ICON_OPTIONS } from "../../config/iconOptions";
 import IconPicker from "../../ui/IconPicker";
 import { useCreateHabit } from "./useCreateHabit";
+import { useEditHabit } from "../HabitDetails/useEditHabit";
+
+type Habit = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  frequency: string;
+};
 
 export default function HabitForm({
   handleIsOpenModal,
+  habit = null,
 }: {
   handleIsOpenModal: (value: boolean) => void;
+  habit?: Habit | null;
 }) {
+  const isEditMode = Boolean(habit);
+
   const { addHabit, isCreating } = useCreateHabit();
+  const { edit: editHabit, isEditing } = useEditHabit();
+
   const [iconPickerOpen, setIconPickerOpen] = useState(false);
 
   const [selectedIconName, setSelectedIconName] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [frequency, setFrequency] = useState("");
+
+  useEffect(() => {
+    if (habit) {
+      setTitle(habit.title);
+      setDescription(habit.description);
+      setFrequency(habit.frequency);
+      setSelectedIconName(habit.icon);
+    }
+  }, [habit]);
 
   const SelectedIconComponent =
     ICON_OPTIONS.find((icon) => icon.name === selectedIconName)?.icon ||
@@ -29,19 +52,25 @@ export default function HabitForm({
 
     if (!title || !frequency || !description) return;
 
-    addHabit(
-      {
-        title,
-        frequency,
-        description,
-        icon: selectedIconName ?? "CheckCircleIcon",
-      },
-      {
-        onSettled: () => {
-          handleIsOpenModal(false);
+    const payload = {
+      title,
+      frequency,
+      description,
+      icon: selectedIconName ?? "CheckCircleIcon",
+    };
+
+    if (isEditMode && habit) {
+      editHabit(
+        { habitId: habit.id, ...payload },
+        {
+          onSettled: () => handleIsOpenModal(false),
         },
-      },
-    );
+      );
+    } else {
+      addHabit(payload, {
+        onSettled: () => handleIsOpenModal(false),
+      });
+    }
   }
 
   return (
@@ -56,10 +85,12 @@ export default function HabitForm({
         <div className="flex h-full flex-col gap-6">
           <div className="px-[2rem]">
             <h3 className="text-textPrimary text-2xl font-medium">
-              Create New Habit
+              {isEditMode ? "Edit Habit" : "Create New Habit"}
             </h3>
             <p className="text-textAccent text-sm font-light">
-              Define a new habit to track and build a better routine.
+              {isEditMode
+                ? "Update your habit details below."
+                : "Define a new habit to track and build a better routine."}
             </p>
           </div>
           <hr className="text-textAccent/20" />
@@ -71,7 +102,7 @@ export default function HabitForm({
               id="title"
               label="Habit Title"
               placeholder="e.g., Morning Jog"
-              required={true}
+              required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -80,7 +111,7 @@ export default function HabitForm({
               id="description"
               label="Description"
               placeholder="e.g., Jog every morning at 7am"
-              required={true}
+              required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -144,9 +175,13 @@ export default function HabitForm({
               <button
                 className="bg-textSecondary text-textWhite hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
                 type="submit"
-                disabled={isCreating}
+                disabled={isCreating || isEditing}
               >
-                {isCreating ? "Saving..." : "Save Habit"}
+                {isCreating || isEditing
+                  ? "Saving..."
+                  : isEditMode
+                    ? "Update Habit"
+                    : "Save Habit"}
               </button>
             </div>
           </form>
