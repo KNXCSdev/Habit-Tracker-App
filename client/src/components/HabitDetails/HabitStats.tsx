@@ -87,7 +87,10 @@ export default function HabitStats() {
           </div>
         </div>
         <div className="col-span-3">
-          <HabitActions />
+          <HabitActions
+            completedDates={habit.completedDates}
+            frequency={habit.frequency}
+          />
         </div>
       </div>
     </div>

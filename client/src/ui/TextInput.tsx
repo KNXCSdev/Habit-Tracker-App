@@ -31,7 +31,7 @@ export default function TextInput({
       </label>
       <div className="relative">
         {icon && (
-          <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5 text-xl">
+          <div className="text-textPrimary pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5 text-xl">
             {icon}
           </div>
         )}
@@ -40,7 +40,7 @@ export default function TextInput({
           id={id}
           name={id}
           placeholder={placeholder}
-          className={`text-textPrimary bg-background border-backgroundIcon block w-full rounded-lg border p-2.5 ${icon ? "ps-10" : ""} placeholder-textTertiary/90 font-light outline-none focus:border-blue-500 focus:ring-blue-500`}
+          className={`text-textPrimary bg-background block w-full rounded-lg border border-gray-400 p-2.5 ${icon ? "ps-10" : ""} placeholder-textTertiary/100 font-light outline-none focus:border-blue-500 focus:ring-blue-500`}
           required={required}
           value={value}
           onChange={onChange}

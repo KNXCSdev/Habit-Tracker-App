@@ -47,7 +47,7 @@ export default function RegisterForm() {
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-6 py-2">
-      <div className="w-[30rem] flex-1 rounded-lg bg-white shadow-md">
+      <div className="bg-background w-[30rem] flex-1 rounded-lg shadow-md">
         <div className="grid h-full grid-rows-[auto_1fr_auto] space-y-2 p-6 pt-10 pb-6">
           <h1 className="text-textPrimary text-center text-4xl font-bold tracking-wide">
             Create an Account
@@ -96,7 +96,7 @@ export default function RegisterForm() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="bg-textSecondary focus:ring-primary-300 text-background text-md flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium hover:bg-blue-700 focus:ring-4 focus:outline-none"
+                className="bg-textSecondary focus:ring-primary-300 text-textWhite text-md flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium hover:bg-blue-700 focus:ring-4 focus:outline-none"
               >
                 {isPending ? (
                   <PulseLoader size={20} color="#0f38ff" />

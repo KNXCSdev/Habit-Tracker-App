@@ -108,3 +108,33 @@ export const deleteHabit = catchAsync(
     });
   }
 );
+
+export const completeHabit = catchAsync(
+  async (req: any, res: Response, next: NextFunction) => {
+    const habit = await Habit.findById(req.params.id);
+
+    if (!habit) {
+      return next(new AppError('Habit not found', 404));
+    }
+
+    const today = new Date();
+    const todayISO = today.toISOString().split('T')[0];
+
+    const alreadyCompleted = habit.completedDates.some((date: any) => {
+      return new Date(date).toISOString().split('T')[0] === todayISO;
+    });
+
+    if (alreadyCompleted) {
+      return next(new AppError('Habit already completed for today', 400));
+    }
+
+    habit.completedDates.push(today);
+
+    await habit.save();
+
+    res.status(200).json({
+      status: 'success',
+      data: habit,
+    });
+  }
+);

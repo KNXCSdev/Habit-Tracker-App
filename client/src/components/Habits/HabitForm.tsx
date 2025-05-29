@@ -119,7 +119,7 @@ export default function HabitForm({
 
               <select
                 id="frequency"
-                className="text-textAccent bg-background border-backgroundIcon block w-full rounded-lg border p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
+                className="text-textAccent bg-background block w-full rounded-lg border border-gray-400 p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
                 value={frequency}
                 onChange={(e) => setFrequency(e.target.value)}
                 required

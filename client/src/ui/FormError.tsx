@@ -6,7 +6,7 @@ interface FormErrorProps {
 
 export default function FormError({ message }: FormErrorProps) {
   return (
-    <div className="text-error flex items-center gap-2 rounded-lg bg-red-100 px-4 py-3">
+    <div className="text-error flex items-center gap-2 rounded-lg bg-red-200 px-4 py-3">
       <span className="text-2xl">
         <MdOutlineErrorOutline />
       </span>
