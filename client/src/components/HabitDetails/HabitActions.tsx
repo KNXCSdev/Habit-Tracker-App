@@ -37,7 +37,7 @@ export default function HabitActions({
         <button
           disabled={isDisabled || isCompleting}
           onClick={() => markComplete(habitId!)}
-          className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all ${
+          className={`flex w-full cursor-auto items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all ${
             isDisabled
               ? "text-textAccent bg-backgroundIcon cursor-not-allowed"
               : "bg-textSecondary text-textWhite hover:bg-blue-800"
