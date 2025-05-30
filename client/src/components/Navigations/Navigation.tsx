@@ -56,7 +56,7 @@ export default function Navigation() {
             {!user && (
               <NavLink
                 to="/login"
-                className="bg-backgroundIcon text-textAccent rounded-lg border border-gray-300 px-6 py-2 font-semibold hover:cursor-pointer"
+                className="bg-backgroundIcon text-textAccent hover:bg-textAccent/10 rounded-lg border border-gray-600 px-6 py-2 font-semibold hover:cursor-pointer"
               >
                 Login
               </NavLink>

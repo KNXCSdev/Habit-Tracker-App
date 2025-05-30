@@ -1,23 +1,25 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import SpinnerFullPage from "./pages/SpinnerFullPage";
-import Hero from "./pages/Hero";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 import AppLayout from "./components/Layouts/AppLayout";
 import PublicLayout from "./components/Layouts/PublicLayout";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import Dashboard from "./pages/Dashboard";
-import Habits from "./pages/Habits";
-import PageNotFound from "./ui/PageNotFound";
-import HabitDetails from "./pages/HabitDetails";
+import Hero from "./pages/Hero";
+
 import { Toaster } from "react-hot-toast";
 import DarkModeProvider from "./context/DarkModeContext";
-import NotYetImplemented from "./ui/NotYetImplemented";
+
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Habits = lazy(() => import("./pages/Habits"));
+const HabitDetails = lazy(() => import("./pages/HabitDetails"));
+const NotYetImplemented = lazy(() => import("./ui/NotYetImplemented"));
+const PageNotFound = lazy(() => import("./ui/PageNotFound"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -33,6 +35,9 @@ function App() {
                 <Route index element={<Hero />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
+                <Route path="features" element={<NotYetImplemented />} />
+                <Route path="pricing" element={<NotYetImplemented />} />
+                <Route path="support" element={<NotYetImplemented />} />
               </Route>
 
               {/* Protected routes with AppLayout */}
@@ -55,7 +60,7 @@ function App() {
             </Routes>
           </Suspense>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
         <Toaster
           position="top-center"
           gutter={12}
