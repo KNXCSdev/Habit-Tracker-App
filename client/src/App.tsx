@@ -12,6 +12,7 @@ import Hero from "./pages/Hero";
 
 import { Toaster } from "react-hot-toast";
 import DarkModeProvider from "./context/DarkModeContext";
+import Profile from "./pages/Profile";
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -53,7 +54,7 @@ function App() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="habits" element={<Habits />} />
                 <Route path="habit/:habitId" element={<HabitDetails />} />
-                <Route path="profile" element={<NotYetImplemented />} />
+                <Route path="profile" element={<Profile />} />
               </Route>
 
               <Route path="*" element={<PageNotFound />} />

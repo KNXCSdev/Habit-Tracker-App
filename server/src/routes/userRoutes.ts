@@ -20,6 +20,7 @@ userRouter
   .get(userController.getMe, userController.getCurrentUser);
 
 userRouter.route('/updateMe').patch(userController.updateMe);
+userRouter.route('/updatePassword').patch(authController.updatePassword);
 
 userRouter.use(authController.restrictTo(['admin']));
 
