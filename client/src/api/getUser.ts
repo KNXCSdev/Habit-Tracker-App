@@ -20,7 +20,7 @@ export async function getUser() {
   } catch (err: any) {
     if (err.response?.status === 401) {
       // Not logged in — treat as not an error
-      return null;
+      console.clear();
     }
 
     const message =
