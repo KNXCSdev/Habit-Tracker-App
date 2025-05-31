@@ -36,9 +36,9 @@ export default function HabitStats() {
         <HabitBreadcrumb />
         <header className="flex items-center justify-between">
           <div className="flex flex-col gap-2">
-            <h2 className="text-textPrimary text-4xl font-semibold">
+            <h1 className="text-textPrimary text-4xl font-semibold">
               {habit.title}
-            </h2>
+            </h1>
             <p className="text-textAccent font-light tracking-wide">
               Consistency is key to building lasting habits. Keep up the great
               work!

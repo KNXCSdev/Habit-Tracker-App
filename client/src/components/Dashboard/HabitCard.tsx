@@ -24,9 +24,9 @@ export default function HabitCard({
     <div className="bg-background rounded-lg px-6 py-6 shadow-md">
       <div className="grid grid-cols-[1fr_0.3fr] items-start gap-4">
         <div>
-          <h2 className="text-textPrimary mb-2 text-xl font-semibold">
+          <h1 className="text-textPrimary mb-2 text-xl font-semibold">
             {title}
-          </h2>
+          </h1>
           <p className="text-textAccent text-md mb-1">{description}&nbsp;</p>
         </div>
         <div className="bg-backgroundIcon flex h-full items-center justify-center rounded-lg">

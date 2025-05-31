@@ -4,20 +4,51 @@ import StreakCard from "../../ui/StreakCard";
 import { useState } from "react";
 import HabitForm from "../Habits/HabitForm";
 import { useUser } from "../Authentication/useUser";
-
 import { useHabits } from "./useHabits";
 import Spinner from "../../ui/Spinner";
+import { HiFire } from "react-icons/hi2";
+
+import { MdOutlineChecklist } from "react-icons/md";
+import EmptyCard from "../../ui/EmptyCard";
 
 export default function HabitStreaksList() {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const { user, isPending } = useUser();
-  const { habits, isPending: isPendingHabits } = useHabits();
+  const { habits = [], isPending: isPendingHabits } = useHabits();
 
   const handleIsOpenModal = (value: boolean) => {
     setIsOpenModal(value);
   };
 
   if (isPending || isPendingHabits) return <Spinner />;
+
+  const renderStreaks = () => {
+    const topHabits = habits
+      .slice()
+      .sort((a, b) => b.streak - a.streak)
+      .slice(0, 3)
+      .filter((habit) => habit.streak > 0);
+
+    if (topHabits.length === 0) {
+      return (
+        <EmptyCard
+          icon={<HiFire />}
+          title="Ignite Your Streaks"
+          description={`Streaks show your consistency. Once you start completing your habits, your streaks will appear here. ENTER Keep it up and watch them grow!`}
+          quote="The journey of thousand miles begins with a single step."
+        />
+      );
+    }
+
+    return topHabits.map((habit) => (
+      <StreakCard
+        key={habit._id}
+        streak={habit.streak}
+        habitId={habit._id}
+        title={habit.title}
+      />
+    ));
+  };
 
   return (
     <>
@@ -32,7 +63,7 @@ export default function HabitStreaksList() {
             </p>
           </div>
           <button
-            onClick={() => setIsOpenModal(!isOpenModal)}
+            onClick={() => setIsOpenModal(true)}
             aria-label="Add New Habit"
             className="bg-textSecondary text-textWhite hover:bg-primary-700 focus:ring-primary-300 flex items-center gap-2 rounded-lg px-8 py-3 font-medium transition-all hover:cursor-pointer focus:ring-4 focus:outline-none"
           >
@@ -50,11 +81,17 @@ export default function HabitStreaksList() {
             </h2>
           </header>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {habits
-              ?.slice(-3)
-              .reverse()
-              .map((habit) => {
-                return (
+            {!habits || habits.length === 0 ? (
+              <EmptyCard
+                icon={<MdOutlineChecklist />}
+                title="Start your Journey"
+                description="It looks like you haven’t added any habits yet. ENTER Click on the button to add your first habit and start building a better you!"
+              />
+            ) : (
+              habits
+                .slice(-3)
+                .reverse()
+                .map((habit) => (
                   <HabitCard
                     key={habit._id}
                     title={habit.title}
@@ -62,8 +99,8 @@ export default function HabitStreaksList() {
                     habitId={habit._id}
                     iconName={habit.icon}
                   />
-                );
-              })}
+                ))
+            )}
           </div>
         </section>
 
@@ -74,25 +111,11 @@ export default function HabitStreaksList() {
             </h2>
           </header>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {habits
-              ?.slice()
-              .sort((a, b) => b.streak - a.streak)
-              .slice(0, 3)
-              .map((habit) => {
-                if (habit.streak === 0) return;
-
-                return (
-                  <StreakCard
-                    key={habit._id}
-                    streak={habit.streak}
-                    habitId={habit._id}
-                    title={habit.title}
-                  />
-                );
-              })}
+            {renderStreaks()}
           </div>
         </section>
       </div>
+
       {isOpenModal && <HabitForm handleIsOpenModal={handleIsOpenModal} />}
     </>
   );

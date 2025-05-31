@@ -26,7 +26,7 @@ export default function UserPasswordForm() {
 
   return (
     <div className="mt-auto flex flex-col gap-4">
-      <h1 className="text-textPrimary text-2xl font-medium">Password Change</h1>
+      <h2 className="text-textPrimary text-2xl font-medium">Password Change</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <TextInput
           id="passwordCurrent"
