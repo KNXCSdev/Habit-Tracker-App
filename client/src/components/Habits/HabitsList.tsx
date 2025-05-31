@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useHabits } from "../Dashboard/useHabits";
 
 import Spinner from "../../ui/Spinner";
+import EmptyCard from "../../ui/EmptyCard";
+import { MdOutlineChecklist } from "react-icons/md";
 
 export default function HabitsList() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -35,17 +37,25 @@ export default function HabitsList() {
 
       <section className="flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {habits?.map((habit) => {
-            return (
-              <HabitCardMinimalistic
-                key={habit._id}
-                title={habit.title}
-                frequency={habit.frequency}
-                iconName={habit.icon}
-                habitId={habit._id}
-              />
-            );
-          })}
+          {!habits || habits.length === 0 ? (
+            <EmptyCard
+              icon={<MdOutlineChecklist />}
+              title="Start your Journey"
+              description="It looks like you haven’t added any habits yet. ENTER Click on the button to add your first habit and start building a better you!"
+            />
+          ) : (
+            habits?.map((habit) => {
+              return (
+                <HabitCardMinimalistic
+                  key={habit._id}
+                  title={habit.title}
+                  frequency={habit.frequency}
+                  iconName={habit.icon}
+                  habitId={habit._id}
+                />
+              );
+            })
+          )}
 
           {isOpenModal && <HabitForm handleIsOpenModal={handleIsOpenModal} />}
         </div>

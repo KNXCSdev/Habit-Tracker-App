@@ -3,9 +3,9 @@ import { Link } from "react-router";
 export default function Hero() {
   return (
     <div className="text-textPrimary flex h-full flex-col items-center justify-center rounded-3xl bg-[linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/hero.webp')] bg-cover bg-center text-center">
-      <h1 className="text-textWhite mb-6 text-6xl font-medium">
+      <h2 className="text-textWhite mb-6 text-6xl font-medium">
         Build Better Habits,<br></br> One Day at a Time
-      </h1>
+      </h2>
       <p className="mb-12 text-xl leading-8 font-light tracking-wider text-gray-300">
         Transform your daily routine with our habit tracker. Set goals, track
         <br></br>
