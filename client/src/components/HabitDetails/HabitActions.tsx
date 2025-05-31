@@ -38,6 +38,7 @@ export default function HabitActions({
       <div className="flex items-center gap-4">
         <button
           disabled={isDisabled || isCompleting}
+          aria-label="Mark as Complete"
           onClick={() => markComplete(habitId!)}
           className={`flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all ${
             isDisabled
@@ -58,6 +59,7 @@ export default function HabitActions({
         </button>
         <button
           onClick={() => handleIsEditModalOpen(true)}
+          aria-label="Edit Habit"
           className="text-textPrimary bg-backgroundIcon hover:bg-backgroundSecondary flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
         >
           <span>
@@ -67,6 +69,7 @@ export default function HabitActions({
         </button>{" "}
         <button
           onClick={() => handleDelete(habitId!)}
+          aria-label="Delete Habit"
           className="text-error bg-background hover:bg-error/20 flex w-[20rem] cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition-all"
           disabled={isDeleting}
         >

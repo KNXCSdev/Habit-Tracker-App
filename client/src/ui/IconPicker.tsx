@@ -46,6 +46,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
             <button
               key={name}
               onClick={() => setSelected(name)}
+              aria-label="Icon"
               className={`hover:bg-backgroundIcon text-textAccent flex cursor-pointer items-center justify-center rounded-lg border p-2 ${
                 selected === name
                   ? "border-textSecondary bg-textSecondary outline-background text-textWhite hover:bg-textSecondary ring-4 ring-blue-500 outline-[0.5px]"
@@ -60,6 +61,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
         <div className="mt-6 flex justify-end gap-3">
           <button
             onClick={onClose}
+            aria-label="Cancel"
             className="text-textAccent hover:bg-backgroundIcon bg-backgroundIcon hover:text-textPrimary cursor-pointer rounded-md px-4 py-2 text-sm font-medium transition-colors"
           >
             Cancel
@@ -67,6 +69,7 @@ export default function IconPicker({ onClose, onConfirm }: IconPickerProps) {
           <button
             onClick={() => onConfirm(selected)}
             disabled={!selected}
+            aria-label="Confirm Selection"
             className={`text-background cursor-pointer rounded-md px-4 py-2 text-sm font-medium ${
               selected
                 ? "bg-blue-600 hover:bg-blue-700"

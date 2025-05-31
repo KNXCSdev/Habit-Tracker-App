@@ -14,6 +14,7 @@ export default function Navigation() {
           <img
             src="/logoTrack.png"
             width={180}
+            alt="Track Habit Logo"
             className="h-[3rem] w-[11rem] object-cover"
           />
         </NavLink>

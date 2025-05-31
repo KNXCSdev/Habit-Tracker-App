@@ -96,6 +96,7 @@ export default function RegisterForm() {
               <button
                 type="submit"
                 disabled={isPending}
+                aria-label="Submit"
                 className="bg-textSecondary focus:ring-primary-300 text-textWhite text-md flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium hover:bg-blue-700 focus:ring-4 focus:outline-none"
               >
                 {isPending ? (

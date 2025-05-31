@@ -43,6 +43,7 @@ export default function UserSettingsForm({
         <button
           type="submit"
           disabled={isUpdating}
+          aria-label="Save settings"
           className="bg-textSecondary text-textWhite hover:bg-textSecondary/90 cursor-pointer self-end rounded-lg px-6 py-2 disabled:opacity-50"
         >
           {isUpdating ? "Saving..." : "Save settings"}
