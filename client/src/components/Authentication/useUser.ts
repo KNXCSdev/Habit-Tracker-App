@@ -3,19 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../../api/getUser";
 
 export function useUser() {
-  const {
-    data,
-    isLoading: isPending,
-    isError,
-  } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
     retry: false,
   });
 
   return {
-    user: isError ? null : data,
-    isPending,
-    isError,
+    user: data,
+    isPending: isLoading,
+    isLoggedIn: !!data,
   };
 }
