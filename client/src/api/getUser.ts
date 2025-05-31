@@ -18,9 +18,13 @@ export async function getUser() {
     return (res.data as { data: User }).data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
+    if (err.response?.status === 401) {
+      // Not logged in — treat as not an error
+      console.clear();
+    }
+
     const message =
       err.response?.data?.message || err.message || "An unknown error occurred";
-
     throw new Error(message);
   }
 }

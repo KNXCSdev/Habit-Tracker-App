@@ -130,6 +130,7 @@ export default function HabitForm({
                 <button
                   className="bg-background text-textAccent border-textPrimary/20 hover:bg-backgroundSecondary cursor-pointer rounded-lg border px-5 py-2 text-sm font-light"
                   type="button"
+                  aria-label="Select Icon"
                   onClick={() => setIconPickerOpen(true)}
                 >
                   Select Icon
@@ -168,6 +169,7 @@ export default function HabitForm({
               <button
                 onClick={() => handleIsOpenModal(false)}
                 type="button"
+                aria-label="Cancel"
                 className="bg-backgroundIcon text-textPrimary hover:bg-backgroundIcon/60 cursor-pointer rounded-lg px-6 py-2"
               >
                 Cancel
@@ -176,6 +178,7 @@ export default function HabitForm({
                 className="bg-textSecondary text-textWhite hover:bg-textSecondary/90 cursor-pointer rounded-lg px-6 py-2"
                 type="submit"
                 disabled={isCreating || isEditing}
+                aria-label="Save Habit"
               >
                 {isCreating || isEditing
                   ? "Saving..."

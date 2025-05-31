@@ -12,7 +12,7 @@ export async function updatePassword({
 }) {
   try {
     const response = await axios.patch(
-      "https://trackify-bp23.onrender.com/api/v1/users/updateMyPassword",
+      "https://trackify-bp23.onrender.com/api/v1/users/updatePassword",
       {
         passwordCurrent,
         password,

@@ -18,6 +18,7 @@ export default function AppNavigation() {
         <NavLink to="/app">
           <img
             src="/logoTrack.png"
+            alt="Track Habit Logo"
             width={180}
             className="h-[3rem] w-[11rem] object-cover"
           />
@@ -52,6 +53,7 @@ export default function AppNavigation() {
           <button
             className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
             onClick={toggleDarkMode}
+            aria-label="Sun icon for dark mode toggle"
           >
             {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
           </button>
@@ -60,6 +62,7 @@ export default function AppNavigation() {
           <button
             className={`hover:text-textSecondary flex cursor-pointer items-center text-2xl font-medium text-blue-800 transition-all hover:underline`}
             onClick={() => logoutUser()}
+            aria-label="Logout button"
           >
             {isPending ? (
               <MoonLoader size={24} color="blue" />

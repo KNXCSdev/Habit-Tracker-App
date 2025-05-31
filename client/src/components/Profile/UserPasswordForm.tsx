@@ -12,7 +12,16 @@ export default function UserPasswordForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    update({ passwordCurrent, password, passwordConfirm });
+    update(
+      { passwordCurrent, password, passwordConfirm },
+      {
+        onSuccess: () => {
+          setPasswordCurrent("");
+          setPassword("");
+          setPasswordConfirm("");
+        },
+      },
+    );
   };
 
   return (
@@ -48,6 +57,7 @@ export default function UserPasswordForm() {
         />
         <button
           type="submit"
+          aria-label="Save New Password"
           disabled={isUpdating}
           className="bg-textSecondary text-textWhite hover:bg-textSecondary/90 cursor-pointer self-end rounded-lg px-6 py-2 disabled:opacity-50"
         >

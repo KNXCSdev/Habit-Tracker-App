@@ -1,0 +1,6 @@
+# Allow all crawlers access to everything
+User-agent: *
+Disallow:
+
+# Sitemap 
+Sitemap: https://trackify-knxcsdev.vercel.app/sitemap.xml
