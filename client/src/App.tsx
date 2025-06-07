@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
+const Features = lazy(() => import("./pages/Features"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Habits = lazy(() => import("./pages/Habits"));
 const HabitDetails = lazy(() => import("./pages/HabitDetails"));
@@ -36,8 +37,7 @@ function App() {
                 <Route index element={<Hero />} />
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
-                <Route path="features" element={<NotYetImplemented />} />
-                <Route path="pricing" element={<NotYetImplemented />} />
+                <Route path="features" element={<Features />} />
                 <Route path="support" element={<NotYetImplemented />} />
               </Route>
 

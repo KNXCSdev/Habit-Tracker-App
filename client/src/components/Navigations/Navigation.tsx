@@ -8,6 +8,7 @@ export default function Navigation() {
   const { user } = useUser();
 
   return (
+
     <nav className="bg-backgroundPrimary flex items-center justify-between px-4 py-2 shadow-sm md:px-8 lg:px-16">
       <div className="flex items-center gap-1 text-4xl font-semibold lg:gap-2">
         <NavLink to="/">
@@ -21,6 +22,7 @@ export default function Navigation() {
       </div>
       {!isLoginPage ? (
         <>
+
           <ul className="flex items-center space-x-8 lg:space-x-12">
             <li>
               <NavLink
@@ -30,14 +32,7 @@ export default function Navigation() {
                 Features
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/pricing"
-                className="hover:text-textSecondary text-textAccent text-md transition-all hover:underline"
-              >
-                Pricing
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 to="/support"
@@ -46,23 +41,26 @@ export default function Navigation() {
                 Support
               </NavLink>
             </li>
+
+            <li>
+              <div className="flex items-center space-x-4">
+                <NavLink
+                  to="/app"
+                  className="bg-textSecondary rounded-lg border border-none px-6 py-2 font-medium text-white transition-all hover:cursor-pointer hover:bg-blue-700"
+                >
+                  Get Started
+                </NavLink>
+                {!user && (
+                  <NavLink
+                    to="/login"
+                    className="bg-backgroundIcon text-textAccent hover:bg-textAccent/10 rounded-lg border border-gray-600 px-6 py-2 font-semibold hover:cursor-pointer"
+                  >
+                    Login
+                  </NavLink>
+                )}
+              </div>
+            </li>
           </ul>
-          <div className="flex items-center space-x-4">
-            <NavLink
-              to="/app"
-              className="bg-textSecondary rounded-lg border border-none px-6 py-2 font-medium text-white transition-all hover:cursor-pointer hover:bg-blue-700"
-            >
-              Get Started
-            </NavLink>
-            {!user && (
-              <NavLink
-                to="/login"
-                className="bg-backgroundIcon text-textAccent hover:bg-textAccent/10 rounded-lg border border-gray-600 px-6 py-2 font-semibold hover:cursor-pointer"
-              >
-                Login
-              </NavLink>
-            )}
-          </div>
         </>
       ) : null}
     </nav>
