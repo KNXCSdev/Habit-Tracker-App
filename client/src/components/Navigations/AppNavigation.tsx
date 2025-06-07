@@ -13,7 +13,7 @@ export default function AppNavigation() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-1 shadow-sm">
+    <nav className="bg-backgroundPrimary flex items-center justify-between px-4 py-1 shadow-sm md:px-8 lg:px-16">
       <div className="flex items-center gap-2 text-4xl font-semibold">
         <NavLink to="/app">
           <img

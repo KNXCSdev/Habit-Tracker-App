@@ -53,7 +53,7 @@ export default function HabitStreaksList() {
   return (
     <>
       <div className="flex flex-col gap-12">
-        <header className="flex items-center justify-between">
+        <header className="flex flex-col justify-between gap-4 sm:flex-row sm:gap-0">
           <div className="flex flex-col gap-2">
             <h1 className="text-textPrimary text-4xl font-bold">
               Welcome back, {user?.name}!
@@ -65,7 +65,7 @@ export default function HabitStreaksList() {
           <button
             onClick={() => setIsOpenModal(true)}
             aria-label="Add New Habit"
-            className="bg-textSecondary text-textWhite hover:bg-primary-700 focus:ring-primary-300 flex items-center gap-2 rounded-lg px-8 py-3 font-medium transition-all hover:cursor-pointer focus:ring-4 focus:outline-none"
+            className="bg-textSecondary text-textWhite hover:bg-primary-700 focus:ring-primary-300 flex shrink-0 items-center gap-2 self-center rounded-lg px-8 py-3 font-medium transition-all hover:cursor-pointer focus:ring-4 focus:outline-none"
           >
             <span className="text-xl">
               <HiOutlinePlusCircle />
