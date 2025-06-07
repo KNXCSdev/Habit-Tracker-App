@@ -34,7 +34,7 @@ export default function HabitStats() {
     <>
       <div className="flex h-full flex-col gap-8">
         <HabitBreadcrumb />
-        <header className="flex items-center justify-between">
+        <header className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="flex flex-col gap-2">
             <h1 className="text-textPrimary text-4xl font-semibold">
               {habit.title}
@@ -45,8 +45,8 @@ export default function HabitStats() {
             </p>
           </div>
         </header>
-        <div className="grid h-full grid-cols-4 grid-rows-[auto_1fr_auto] gap-6">
-          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
+        <div className="grid h-full grid-rows-[auto_1fr_auto] gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1rem] xl:p-[1.6rem]">
             <div className="row-span-full flex h-full items-center justify-center rounded-full bg-blue-100 text-4xl text-blue-700">
               <HiOutlineChartBar />
             </div>
@@ -57,7 +57,7 @@ export default function HabitStats() {
               {completionRate}%
             </p>
           </div>
-          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
+          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1rem] xl:p-[1.6rem]">
             <div className="row-span-full flex h-full items-center justify-center rounded-full bg-indigo-100 text-4xl text-indigo-700">
               <MdOutlineCalendarMonth />
             </div>
@@ -69,7 +69,7 @@ export default function HabitStats() {
                 habit.frequency.slice(1)}{" "}
             </p>
           </div>
-          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
+          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1rem] xl:p-[1.6rem]">
             <div className="row-span-full flex h-full items-center justify-center rounded-full bg-green-100 text-4xl text-green-700">
               <HiFire />
             </div>
@@ -91,7 +91,7 @@ export default function HabitStats() {
                     : " month"}
             </p>
           </div>
-          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1.6rem]">
+          <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1rem] xl:p-[1.6rem]">
             <div className="row-span-full flex h-full items-center justify-center rounded-full bg-red-100 text-4xl text-red-700">
               <HiOutlineFire />
             </div>
@@ -114,8 +114,8 @@ export default function HabitStats() {
             </p>
           </div>
 
-          <div className="col-span-4 h-full">
-            <div className="bg-background border-backgroundIcon h-full rounded-lg border p-[1.6rem] px-6 py-6">
+          <div className="col-span-2 h-full lg:col-span-3 xl:col-span-4">
+            <div className="bg-background border-backgroundIcon h-full rounded-lg border p-[1rem] px-6 py-6 xl:p-[1.6rem]">
               <div className="mb-6 flex w-full flex-col gap-[0.1rem]">
                 <h6 className="text-textPrimary text-xl font-medium">
                   Progress Overview
@@ -128,7 +128,7 @@ export default function HabitStats() {
               <HabitChart completedDates={habit.completedDates} />
             </div>
           </div>
-          <div className="col-span-4">
+          <div className="col-span-2 lg:col-span-3 xl:col-span-4">
             <HabitActions
               completedDates={habit.completedDates}
               frequency={habit.frequency}

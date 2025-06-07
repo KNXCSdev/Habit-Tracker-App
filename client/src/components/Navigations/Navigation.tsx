@@ -8,8 +8,8 @@ export default function Navigation() {
   const { user } = useUser();
 
   return (
-    <nav className="bg-backgroundPrimary flex items-center justify-between px-16 py-3 shadow-sm">
-      <div className="flex items-center gap-2 text-4xl font-semibold">
+    <nav className="bg-backgroundPrimary flex items-center justify-between px-4 py-2 shadow-sm md:px-8 lg:px-16">
+      <div className="flex items-center gap-1 text-4xl font-semibold lg:gap-2">
         <NavLink to="/">
           <img
             src="/logoTrack.png"
@@ -21,7 +21,7 @@ export default function Navigation() {
       </div>
       {!isLoginPage ? (
         <>
-          <ul className="flex space-x-12">
+          <ul className="flex items-center space-x-8 lg:space-x-12">
             <li>
               <NavLink
                 to="/features"
