@@ -1,27 +1,31 @@
-import { getDay, parseISO } from "date-fns";
+import { getDay } from "date-fns"; // still needed
 import { ResponsiveContainer, AreaChart, Area, XAxis, Tooltip } from "recharts";
 
 const dayLabels = [
-  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
-]; // Sunday = 0
+  "Sunday",
+];
 
 interface Props {
   completedDates: string[]; // ISO date strings
 }
 
 export default function HabitChart({ completedDates }: Props) {
-  // Map day index (0=Sun..6=Sat) to completion count
   const countsPerDay = Array(7).fill(0);
 
   completedDates.forEach((isoDate) => {
-    const dayIndex = getDay(parseISO(isoDate)); // 0 (Sun) - 6 (Sat)
-    countsPerDay[dayIndex]++;
+    const localDate = new Date(isoDate); // Local timezone
+    const dayIndex = getDay(localDate); // 0 = Sunday, 6 = Saturday
+
+    // Adjust to start from Monday instead of Sunday
+    const adjustedIndex = (dayIndex + 6) % 7; // 0 = Monday, 6 = Sunday
+
+    countsPerDay[adjustedIndex]++;
   });
 
   const chartData = countsPerDay.map((count, index) => ({
