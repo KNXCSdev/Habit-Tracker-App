@@ -79,10 +79,10 @@ export default function HabitForm({
       onClick={() => handleIsOpenModal(false)}
     >
       <div
-        className="bg-background fixed top-1/2 left-1/2 z-50 h-[40rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-lg py-[1.5rem] shadow-lg transition"
+        className="bg-background fixed top-1/2 left-1/2 z-50 h-[32rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-lg py-[0.5rem] shadow-lg transition sm:h-[40rem] sm:w-[30rem] sm:py-[1.5rem]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex h-full flex-col gap-6">
+        <div className="flex h-full flex-col gap-2 sm:gap-6">
           <div className="px-[2rem]">
             <h3 className="text-textPrimary text-2xl font-medium">
               {isEditMode ? "Edit Habit" : "Create New Habit"}
@@ -95,7 +95,7 @@ export default function HabitForm({
           </div>
           <hr className="text-textAccent/20" />
           <form
-            className="flex flex-grow flex-col gap-6 px-[2rem]"
+            className="flex flex-grow flex-col gap-3 px-[2rem] sm:gap-6"
             onSubmit={handleSubmit}
           >
             <TextInput
@@ -105,6 +105,7 @@ export default function HabitForm({
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              padding={true}
             />
 
             <TextInput
@@ -114,6 +115,7 @@ export default function HabitForm({
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              padding={true}
             />
 
             <div>
@@ -151,7 +153,7 @@ export default function HabitForm({
 
               <select
                 id="frequency"
-                className="text-textAccent bg-background block w-full rounded-lg border border-gray-400 p-2.5 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
+                className="text-textAccent bg-background block w-full rounded-lg border border-gray-400 p-2.5 py-1 font-light outline-none focus:border-blue-500 focus:ring-blue-500"
                 value={frequency}
                 onChange={(e) => setFrequency(e.target.value)}
                 required

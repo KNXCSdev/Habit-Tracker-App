@@ -45,7 +45,7 @@ export default function HabitStats() {
             </p>
           </div>
         </header>
-        <div className="grid h-full grid-rows-[auto_1fr_auto] gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+        <div className="grid h-full grid-cols-1 grid-rows-[auto_1fr_auto] gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
           <div className="bg-background border-backgroundIcon grid grid-cols-[5rem_1fr] grid-rows-[auto_auto] items-center gap-[0.4rem_1.6rem] rounded-lg border p-[1rem] xl:p-[1.6rem]">
             <div className="row-span-full flex h-full items-center justify-center rounded-full bg-blue-100 text-4xl text-blue-700">
               <HiOutlineChartBar />
@@ -114,7 +114,7 @@ export default function HabitStats() {
             </p>
           </div>
 
-          <div className="col-span-2 h-full lg:col-span-3 xl:col-span-4">
+          <div className="col-span-1 h-full sm:col-span-2 lg:col-span-3 xl:col-span-4">
             <div className="bg-background border-backgroundIcon h-full rounded-lg border p-[1rem] px-6 py-6 xl:p-[1.6rem]">
               <div className="mb-6 flex w-full flex-col gap-[0.1rem]">
                 <h6 className="text-textPrimary text-xl font-medium">
@@ -128,7 +128,7 @@ export default function HabitStats() {
               <HabitChart completedDates={habit.completedDates} />
             </div>
           </div>
-          <div className="col-span-2 lg:col-span-3 xl:col-span-4">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4">
             <HabitActions
               completedDates={habit.completedDates}
               frequency={habit.frequency}
