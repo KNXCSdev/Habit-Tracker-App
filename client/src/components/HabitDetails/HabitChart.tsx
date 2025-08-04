@@ -34,8 +34,8 @@ export default function HabitChart({ completedDates }: Props) {
   }));
 
   return (
-    <div className="flex h-full gap-12">
-      <div className="w-1/10">
+    <div className="flex h-full flex-col gap-12 sm:flex-row">
+      <div className="w-full sm:w-1/10">
         <p className="text-textAccent/90 mb-2">Completions by Day</p>
         <div className="flex items-end gap-2">
           <span className="text-textPrimary text-4xl font-bold">

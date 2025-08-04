@@ -13,8 +13,8 @@ export default function AppNavigation() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <nav className="bg-backgroundPrimary flex items-center justify-between px-4 py-1 shadow-sm md:px-8 lg:px-16">
-      <div className="flex items-center gap-2 text-4xl font-semibold">
+    <nav className="bg-backgroundPrimary flex items-center justify-start px-4 py-1 shadow-sm sm:justify-between md:px-8 lg:px-16">
+      <div className="hidden items-center gap-2 text-4xl font-semibold sm:flex">
         <NavLink to="/app">
           <img
             src="/logoTrack.png"

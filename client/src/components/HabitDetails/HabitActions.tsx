@@ -35,7 +35,7 @@ export default function HabitActions({
       <h6 className="text-textPrimary mb-2 self-end text-xl font-medium">
         Actions
       </h6>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
         <button
           disabled={isDisabled || isCompleting}
           aria-label="Mark as Complete"

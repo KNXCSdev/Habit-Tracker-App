@@ -8,6 +8,7 @@ interface TextInputProps {
   icon?: ReactNode;
   required?: boolean;
   value: string;
+  padding?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -20,6 +21,7 @@ export default function TextInput({
   required = false,
   value,
   onChange,
+  padding = false,
 }: TextInputProps) {
   return (
     <div>
@@ -40,7 +42,7 @@ export default function TextInput({
           id={id}
           name={id}
           placeholder={placeholder}
-          className={`text-textPrimary bg-background block w-full rounded-lg border border-gray-400 p-2.5 ${icon ? "ps-10" : ""} placeholder-textTertiary/100 font-light outline-none focus:border-blue-500 focus:ring-blue-500`}
+          className={`text-textPrimary ${padding ? "py-1" : ""} bg-background block w-full rounded-lg border border-gray-400 p-2.5 ${icon ? "ps-10" : ""} placeholder-textTertiary/100 font-light outline-none focus:border-blue-500 focus:ring-blue-500`}
           required={required}
           value={value}
           onChange={onChange}
